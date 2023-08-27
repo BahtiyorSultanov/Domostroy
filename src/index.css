@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.css-187mznn-MuiSlider-root {
+  color: rgba(141, 179, 56, 1) !important;
+}
+.css-eg0mwd-MuiSlider-thumb {
+    border-radius: 0% !important;
+}
+.menue div{
+ padding: 40px 40px 40px 40px;
+}
+.footUl{
+  font-size: 16px;
+  text-align: left;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footUl li{
+  color: #F5F5F6;
+}
+.icons img{
+  width: 25px;
+  height: 25px;
+}
