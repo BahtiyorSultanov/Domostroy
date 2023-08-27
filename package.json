@@ -15,6 +15,7 @@
     "@headlessui/react": "^1.7.17",
     "@mui/material": "^5.14.6",
     "@szhsin/react-menu": "^4.0.3",
+    "firebase": "8.5",
     "icons": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

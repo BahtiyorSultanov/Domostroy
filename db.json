@@ -1,0 +1,18 @@
+{
+  "buildingTricks": [
+    {
+      "text":"Клееный брус",
+      "img":"http://127.0.0.1:5500/src/assets/Brevno.svg"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

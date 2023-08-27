@@ -5,12 +5,12 @@
   color: rgba(141, 179, 56, 1) !important;
 }
 .css-eg0mwd-MuiSlider-thumb {
-    border-radius: 0% !important;
+  border-radius: 0% !important;
 }
-.menue div{
- padding: 40px 40px 40px 40px;
+.menue div {
+  padding: 40px 40px 40px 40px;
 }
-.footUl{
+.footUl {
   font-size: 16px;
   text-align: left;
   color: white;
@@ -18,10 +18,70 @@
   flex-direction: column;
   gap: 20px;
 }
-.footUl li{
-  color: #F5F5F6;
+.footUl li {
+  color: #f5f5f6;
 }
-.icons img{
+.icons img {
   width: 25px;
   height: 25px;
+}
+.menu-opener {
+  width: 770px !important;
+  background-color: #f5f5f6 !important;
+  padding: 20px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  color: #49423d !important;
+  font-size: 18px !important;
+  position: relative !important;
+}
+.menu-opener:hover {
+  color: #8db338 !important;
+}
+
+element.style {
+  opacity: 1;
+  transform: none;
+  transition: opacity 251ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    transform 167ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  top: 275px;
+  left: 80px;
+  transform-origin: 0px 0px;
+}
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  width: 770px;
+  position: relative !important;
+  top: 100px !important;
+  left: 80px !important;
+}
+@media screen and (max-width: 426px) {
+  .menu-opener {
+    width: 328px !important;
+    background-color: #f5f5f6 !important;
+    padding: 20px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    color: #49423d !important;
+    font-size: 18px !important;
+    position: relative !important;
+  }
+  .menu-opener:hover {
+    color: #8db338 !important;
+  }
+
+  element.style {
+    opacity: 1;
+    transform: none;
+    transition: opacity 251ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+      transform 167ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    top: 275px;
+    left: 80px;
+    transform-origin: 0px 0px;
+  }
+  .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    width: 770px;
+    position: relative !important;
+    top: 100px !important;
+    left: 80px !important;
+  }
 }

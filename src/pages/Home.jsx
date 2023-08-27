@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import Slider from "../Components/Slider";
 import SliderComponent from "../Components/Slider";
 import BuildingSelect from "../Components/BuildingSelect";
 import SurfaceSelect from "../Components/SurfaceSelect";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,63 +16,87 @@ import "./styles.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Register from "../Components/Register";
-import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
+import QuestionMenu from "../Components/QuestionMenu";
+import { projectFirestore } from "../Firebase/Config";
 function Home() {
+  const [data, setData] = useState([]);
+  let result = [];
+  useEffect(() => {
+    projectFirestore
+      .collection("buildingTricks").onSnapshot((data) => {
+        if (!data.empty) {
+          data.docs.forEach((item) => {
+            result.push(item.data());
+            setData(result);
+          });
+        } else {
+        }
+      });
+  });
   return (
     <div className="absolute top-[80px] left-0 flex flex-col items-center gap-[100px]">
-      <div className="m-[40px] mt-[350px] px-[20px] py-[20px] flex flex-col gap-[60px] bg-white">
-        <div className="flex items-center gap-[472px]">
-          <div className="flex gap-[40px]">
-            <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
+      <div className="">
+        <div className="border-[2px] m-[40px] mt-[350px] px-[20px] py-[20px] flex flex-col gap-[60px] bg-white max-sm:w-[328px] max-sm:m-0">
+          <div className="flex items-center gap-[472px] max-sm:hidden">
+            <div className="flex gap-[40px] max-sm:flex-col">
+              <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
+                Построить
+              </button>
+              <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
+                Купить
+              </button>
+              <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
+                Арендовать
+              </button>
+            </div>
+            <div className="flex items-center gap-[40px]">
+              <button className="text-[20px]">
+                <HiOutlineMenuAlt1 />
+              </button>
+              <h1 className="text-[14px] text-[#49423D]">Расширенный поиск</h1>
+            </div>
+          </div>
+          <select className="px-[44px] py-[13px] bg-[#8DB338] text-white text-[16px] font-bold">
+            <option value="Построить">Построить</option>
+            <option value="Бани">Бани</option>
+            <option value="Гаражи">Гаражи</option>
+            <option value="Навесы">Навесы</option>
+            <option value="Навесы">Коммерческие объекты</option>
+          </select>
+          <div className="flex items-start gap-[40px] max-sm:flex-col">
+            <div className="flex flex-col text-left gap-[10px]">
+              <h1>Тип строения</h1>
+              <BuildingSelect />
+            </div>
+            <div className="flex flex-col text-left gap-[10px]">
+              <h1>Габариты, м</h1>
+              <SurfaceSelect />
+            </div>
+            <div className="flex flex-col items-start text-left gap-[10px]">
+              <h1>Общая площадь, м²</h1>
+              <div className="flex items-center w-[300px] px-[16px] py-[9px] bg-[#F5F5F6] justify-between text-[14px] font-light">
+                <h1>от 100</h1>
+                <h1>до 1000</h1>
+              </div>
+              <SliderComponent />
+            </div>
+            <div className="flex flex-col items-start text-left gap-[10px]">
+              <h1>Стоимость, ₽</h1>
+              <div className="flex items-center w-[300px] px-[16px] py-[9px] bg-[#F5F5F6] justify-between text-[14px] font-light">
+                <h1>от 100 000</h1>
+                <h1>до 1 000 000</h1>
+              </div>
+              <SliderComponent />
+            </div>
+            <button className="w-[190px] py-[9px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
               Построить
             </button>
-            <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
-              Купить
-            </button>
-            <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
-              Арендовать
-            </button>
           </div>
-          <div className="flex items-center gap-[40px]">
-            <button className="text-[20px]">
-              <HiOutlineMenuAlt1 />
-            </button>
-            <h1 className="text-[14px] text-[#49423D]">Расширенный поиск</h1>
-          </div>
-        </div>
-        <div className="flex items-start gap-[40px]">
-          <div className="flex flex-col text-left gap-[10px]">
-            <h1>Тип строения</h1>
-            <BuildingSelect />
-          </div>
-          <div className="flex flex-col text-left gap-[10px]">
-            <h1>Габариты, м</h1>
-            <SurfaceSelect />
-          </div>
-          <div className="flex flex-col items-start text-left gap-[10px]">
-            <h1>Общая площадь, м²</h1>
-            <div className="flex items-center w-[300px] px-[16px] py-[9px] bg-[#F5F5F6] justify-between text-[14px] font-light">
-              <h1>от 100</h1>
-              <h1>до 1000</h1>
-            </div>
-            <SliderComponent />
-          </div>
-          <div className="flex flex-col items-start text-left gap-[10px]">
-            <h1>Стоимость, ₽</h1>
-            <div className="flex items-center w-[300px] px-[16px] py-[9px] bg-[#F5F5F6] justify-between text-[14px] font-light">
-              <h1>от 100 000</h1>
-              <h1>до 1 000 000</h1>
-            </div>
-            <SliderComponent />
-          </div>
-          <button className="w-[190px] py-[9px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
-            Построить
-          </button>
         </div>
       </div>
-      <div className="flex flex-col items-start gap-[20px] ">
+      <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold">Типы строений</h1>
-        <div className="flex items-center gap-[50px]">
+        <div className="flex items-center gap-[50px] max-sm:hidden">
           <div className="relative w-[234px] h-[312px]">
             <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
               332
@@ -136,67 +161,17 @@ function Home() {
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold">Технологии строительства</h1>
-        <div className="flex items-center w-[1300px] flex-wrap gap-[20px]">
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
-          <div className="w-[410px] h-[120px] relative flex items-center">
-            <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-              Клееный брус
-            </h1>
-            <img src="http://127.0.0.1:5500/src/assets/Brevno.svg" alt="" />
-          </div>
+        <div className="flex items-center w-[1300px] flex-wrap gap-[20px] max-sm:w-[420px]">
+          {data.map((item) => {
+            return (
+              <div className="w-[410px] h-[120px] relative flex items-center">
+                <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
+                  {item.text}
+                </h1>
+                <img src={item.img} alt="" />
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
@@ -219,7 +194,7 @@ function Home() {
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold">Хиты продаж</h1>
         <Swiper
-          spaceBetween={30}
+          spaceBetween={1}
           centeredSlides={true}
           autoplay={{
             delay: 2500,
@@ -247,10 +222,10 @@ function Home() {
           <SwiperSlide>Slide 9</SwiperSlide>
         </Swiper>
       </div>
-      <div className="flex flex-col items-start gap-[20px]">
+      <div className="flex flex-col items-start gap-[20px] max-sm:w-[100%]">
         <h1 className="text-[40px] font-bold">Наши преимущества</h1>
-        <div className="flex items-center gap-[100px]">
-          <div className="flex items-center flex-wrap gap-[50px] w-[880px]">
+        <div className="flex items-center gap-[100px] max-sm:flex-col">
+          <div className="flex items-center flex-wrap gap-[50px] w-[880px] max-sm:flex-col max-sm:w-[100%]">
             <div className="flex items-center gap-[40px]">
               <div className="w-[80px] h-[80px] bg-[#8DB338] text-[64px] text-white flex items-center justify-center font-bold">
                 1
@@ -313,10 +288,10 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="mt-[100px] w-[109.5%] h-[680px] bg-gradient-to-r from-[#8DB338] to-[#739A1D] relative z-[10]">
-        <div className="flex items-center m-[60px] justify-center gap-[200px]">
-          <Register bgclr={"#FFFFFF"} inpclr={"#F5F5F6"}/>
-          <div className="flex flex-col items-start text-left gap-[40px] w-[519px]">
+      <div className="mt-[100px] w-[100%] h-[100%] bg-gradient-to-r from-[#8DB338] to-[#739A1D] relative z-[10] max-sm:w-[425px]">
+        <div className="flex items-center m-[60px] justify-center gap-[200px] max-sm:flex-col-reverse">
+          <Register bgclr={"#FFFFFF"} inpclr={"#F5F5F6"} />
+          <div className="flex flex-col items-start text-left gap-[40px] w-[519px] max-sm:w-[328px]">
             <h1 className="text-white text-[40px] font-bold">
               Расчёт стоимости <br /> по вашему проекту
             </h1>
@@ -333,8 +308,8 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flex items-end gap-[150px]">
-        <div className="w-[590px] text-[#49423D] text-left flex flex-col gap-[50px]">
+      <div className="flex items-end gap-[150px] max-sm:flex-col-reverse">
+        <div className="w-[590px] text-[#49423D] text-left flex flex-col gap-[50px] max-sm:w-[328px]">
           <h1 className="text-[40px] font-bold">О сервисе</h1>
           <h1>
             <b>DOMOSBOR</b> — уникальный сервис, который объединяет лучших
@@ -363,16 +338,19 @@ function Home() {
             Подробнее
           </button>
         </div>
-        <img src="" className="w-[630px] h-[630px]" />
+        <img
+          src=""
+          className="w-[630px] h-[630px] max-sm:w-[328px] max-sm:h-[230px]"
+        />
       </div>
       <div className="flex flex-col items-start gap-[70px]">
         <div className="flex flex-col gap-[40px]">
-          <div className="flex w-[1290px] justify-between">
+          <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
-          <div className="flex items-center">
-            <div className="w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
+          <div className="flex items-center max-sm:flex-col max-sm:items-start">
+            <div className="max-sm:w-[328px] max-sm:h-[118px] w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
               <div className="text-left">
                 <h1>Кроссовский Виктор</h1>
                 <h1>Санкт-Петербург</h1>
@@ -382,12 +360,12 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col gap-[40px]">
-          <div className="flex w-[1290px] justify-between">
+          <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
-          <div className="flex items-center">
-            <div className="w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
+          <div className="flex items-center max-sm:flex-col max-sm:items-start">
+            <div className="max-sm:w-[328px] max-sm:h-[118px] w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
               <div className="text-left">
                 <h1>Кроссовский Виктор</h1>
                 <h1>Санкт-Петербург</h1>
@@ -397,12 +375,12 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col gap-[40px]">
-          <div className="flex w-[1290px] justify-between">
+          <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
-          <div className="flex items-center">
-            <div className="w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
+          <div className="flex items-center max-sm:flex-col max-sm:items-start">
+            <div className="max-sm:w-[328px] max-sm:h-[118px] w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
               <div className="text-left">
                 <h1>Кроссовский Виктор</h1>
                 <h1>Санкт-Петербург</h1>
@@ -415,15 +393,15 @@ function Home() {
           Стать партнером сервиса
         </button>
       </div>
-      <div className="flex flex-col items-start gap-[20px] w-[1290px]">
-        <div className="flex w-[100%] justify-between items-center">
+      <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[400px]">
+        <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
           <h1 className="text-[40px] font-bold">Блог</h1>
           <h1 className="text-[28px] font-semibold text-[#8DB338]">
             Все блоги
           </h1>
         </div>
         <div className="flex items-center">
-          <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
+          {/* <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px] max-sm:hidden">
             <img src="" className="w-[234px] h-[234px]" />
             <div className="text-left my-[10px]">
               <h1 className="text-[16px] font-[600] text-[#49423D]">
@@ -433,18 +411,49 @@ function Home() {
                 Переосмысленный сарай с уютным характером
               </h1>
             </div>
-          </div>
+          </div> */}
+          <Swiper
+            spaceBetween={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <div className="flex items-center">
+                <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
+                  <img src="" className="w-[234px] h-[234px]" />
+                  <div className="text-left my-[10px]">
+                    <h1 className="text-[16px] font-[600] text-[#49423D]">
+                      My House
+                    </h1>
+                    <h1 className="text-[14px] font-[400] text-[#909090]">
+                      Переосмысленный сарай с уютным характером
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>Slide 9</SwiperSlide>
+          </Swiper>
         </div>
       </div>
-      <div className="flex flex-col items-start gap-[20px] w-[1290px]">
-        <div className="flex w-[100%] justify-between items-center">
+      <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[400px]">
+        <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
           <h1 className="text-[40px] font-bold">Отзывы</h1>
           <h1 className="text-[28px] font-semibold text-[#8DB338]">
             Все отзывы
           </h1>
         </div>
         <div className="flex items-center">
-          <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
+          {/* <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px] max-sm:hidden">
             <video src="" className="w-[234px] h-[360px]"></video>
             <div className="text-left my-[10px]">
               <h1 className="text-[16px] font-[600] text-[#49423D]">
@@ -454,29 +463,66 @@ function Home() {
                 Переосмысленный сарай с уютным характером
               </h1>
             </div>
-          </div>
+          </div> */}
+          <Swiper
+            spaceBetween={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <SwiperSlide>
+              <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
+                <video src="" className="w-[234px] h-[360px]"></video>
+                <div className="text-left my-[10px]">
+                  <h1 className="text-[16px] font-[600] text-[#49423D]">
+                    My House
+                  </h1>
+                  <h1 className="text-[14px] font-[400] text-[#909090]">
+                    Переосмысленный сарай с уютным характером
+                  </h1>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>Slide 9</SwiperSlide>
+          </Swiper>
         </div>
       </div>
-      <div className="flex items-start gap-[20px] w-[1290px]">
-        <div className="flex flex-col items-center">
-          <Menu
-            menuClassName="menue"
-            menuButton={<MenuButton>Menu</MenuButton>}
-            transition
-          >
-            <div className=" bg-gray-300 px-[5px]">
-              <MenuItem>Cut</MenuItem>
-              <MenuItem>Copy</MenuItem>
-              <MenuItem>Paste</MenuItem>
-            </div>
-          </Menu>
-        </div>
-        <div className="flex flex-col items-start gap-[30px]">
-          <div className="text-left">
-            <h1>Не нашли нужный ответ?</h1>
-            <h1>Мы готовы ответить на любой ваш вопрос!</h1>
+      <div className="flex flex-col items-start gap-[50px]">
+        <h1 className="text-[40px] font-bold">Частые вопросы</h1>
+        <div className="flex items-start gap-[100px] w-[1290px] max-sm:w-[400px] max-sm:flex-col">
+          <div className="flex flex-col items-start gap-[30px]">
+            <QuestionMenu
+              question={"Вопрос 1 ?"}
+              menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
+            />
+            <QuestionMenu
+              question={"Вопрос 1 ?"}
+              menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
+            />
+            <QuestionMenu
+              question={"Вопрос 1 ?"}
+              menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
+            />
           </div>
-          <Register bgclr={'#F5F5F6'} inpclr={'white'}/>
+          <div className="flex flex-col items-start gap-[30px]">
+            <div className="text-left">
+              <h1 className="text-[24px] text-[#49423D] font-[600]">
+                Не нашли нужный ответ?
+              </h1>
+              <h1 className="text-[16px] text-[#49423D] font-[500]">
+                Мы готовы ответить на любой ваш вопрос!
+              </h1>
+            </div>
+            <Register bgclr={"#F5F5F6"} inpclr={"white"} />
+          </div>
         </div>
       </div>
     </div>
