@@ -159,94 +159,95 @@ function Home() {
             </h1>
           </div>
         </div>
-
-        <Swiper
-          spaceBetween={1}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <div className="flex items-center gap-[50px] sm:hidden">
-            <SwiperSlide>
-              <div className="relative w-[234px] h-[312px]">
-                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-                  332
-                </span>
-                <img
-                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-                  className="w-[100%]"
-                />
-                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-                  Дома
-                </h1>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative w-[234px] h-[312px]">
-                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-                  332
-                </span>
-                <img
-                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-                  className="w-[100%]"
-                />
-                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-                  Дома
-                </h1>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative w-[234px] h-[312px]">
-                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-                  332
-                </span>
-                <img
-                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-                  className="w-[100%]"
-                />
-                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-                  Дома
-                </h1>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative w-[234px] h-[312px]">
-                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-                  332
-                </span>
-                <img
-                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-                  className="w-[100%]"
-                />
-                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-                  Дома
-                </h1>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="relative w-[234px] h-[312px]">
-                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-                  332
-                </span>
-                <img
-                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-                  className="w-[100%]"
-                />
-                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-                  Дома
-                </h1>
-              </div>
-            </SwiperSlide>
-          </div>
-        </Swiper>
+        <div className="sm:hidden">
+          <Swiper
+            spaceBetween={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            <div className="flex items-center gap-[50px] sm:hidden">
+              <SwiperSlide>
+                <div className="relative w-[234px] h-[312px]">
+                  <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                    332
+                  </span>
+                  <img
+                    src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                    className="w-[100%]"
+                  />
+                  <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                    Дома
+                  </h1>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-[234px] h-[312px]">
+                  <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                    332
+                  </span>
+                  <img
+                    src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                    className="w-[100%]"
+                  />
+                  <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                    Дома
+                  </h1>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-[234px] h-[312px]">
+                  <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                    332
+                  </span>
+                  <img
+                    src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                    className="w-[100%]"
+                  />
+                  <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                    Дома
+                  </h1>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-[234px] h-[312px]">
+                  <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                    332
+                  </span>
+                  <img
+                    src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                    className="w-[100%]"
+                  />
+                  <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                    Дома
+                  </h1>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="relative w-[234px] h-[312px]">
+                  <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                    332
+                  </span>
+                  <img
+                    src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                    className="w-[100%]"
+                  />
+                  <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                    Дома
+                  </h1>
+                </div>
+              </SwiperSlide>
+            </div>
+          </Swiper>
+        </div>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
@@ -414,7 +415,9 @@ function Home() {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <h1 className="text-[40px] font-semibold absolute text-[#49423D]">Domosbor</h1>
+            <h1 className="text-[40px] font-semibold absolute text-[#49423D]">
+              Domosbor
+            </h1>
             <img src="http://127.0.0.1:5500/src/assets/logoderevo.svg" />
           </div>
         </div>
