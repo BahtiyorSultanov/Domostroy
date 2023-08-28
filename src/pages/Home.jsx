@@ -94,7 +94,9 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
-        <h1 className="text-[40px] font-bold">Типы строений</h1>
+        <h1 className="text-[40px] font-bold text-[#49423D] max-sm:text-[28px]">
+          Типы строений
+        </h1>
         <div className="flex items-center gap-[50px] max-sm:hidden">
           <div className="relative w-[234px] h-[312px]">
             <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
@@ -157,10 +159,100 @@ function Home() {
             </h1>
           </div>
         </div>
+
+        <Swiper
+          spaceBetween={1}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <div className="flex items-center gap-[50px] sm:hidden">
+            <SwiperSlide>
+              <div className="relative w-[234px] h-[312px]">
+                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                  332
+                </span>
+                <img
+                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                  className="w-[100%]"
+                />
+                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                  Дома
+                </h1>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative w-[234px] h-[312px]">
+                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                  332
+                </span>
+                <img
+                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                  className="w-[100%]"
+                />
+                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                  Дома
+                </h1>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative w-[234px] h-[312px]">
+                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                  332
+                </span>
+                <img
+                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                  className="w-[100%]"
+                />
+                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                  Дома
+                </h1>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative w-[234px] h-[312px]">
+                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                  332
+                </span>
+                <img
+                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                  className="w-[100%]"
+                />
+                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                  Дома
+                </h1>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="relative w-[234px] h-[312px]">
+                <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
+                  332
+                </span>
+                <img
+                  src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
+                  className="w-[100%]"
+                />
+                <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
+                  Дома
+                </h1>
+              </div>
+            </SwiperSlide>
+          </div>
+        </Swiper>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
-        <h1 className="text-[40px] font-bold">Технологии строительства</h1>
-        <div className="flex items-center w-[1300px] flex-wrap gap-[20px] max-sm:w-[420px] max-sm:flex-col">
+        <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
+          Технологии строительства
+        </h1>
+        <div className="flex items-center w-[100%] flex-wrap gap-[20px] max-sm:w-[420px] max-sm:flex-col">
           {data.map((item) => {
             return (
               <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[328px]">
@@ -174,7 +266,9 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
-        <h1 className="text-[40px] font-bold">Полезные ссылки</h1>
+        <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
+          Полезные ссылки
+        </h1>
         <div className="flex items-center max-sm:hidden">
           <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
             <img src="" className="w-[100%] h-[150px]" />
@@ -225,7 +319,9 @@ function Home() {
         </Swiper>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
-        <h1 className="text-[40px] font-bold">Хиты продаж</h1>
+        <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
+          Хиты продаж
+        </h1>
         <Swiper
           spaceBetween={1}
           centeredSlides={true}
@@ -255,24 +351,15 @@ function Home() {
           <SwiperSlide>Slide 9</SwiperSlide>
         </Swiper>
       </div>
-      <div className="flex flex-col items-start gap-[20px] max-sm:w-[100%] max-sm:items-center">
-        <h1 className="text-[40px] font-bold max-sm:text-[28px] max-sm:w-[228px] max-sm:text-left">Наши преимущества</h1>
+      <div className="flex flex-col items-start gap-[20px]">
+        <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[228px] max-sm:text-left">
+          Наши преимущества
+        </h1>
         <div className="flex items-center gap-[100px] max-sm:flex-col">
           <div className="flex items-center flex-wrap gap-[50px] w-[880px] max-sm:flex-col max-sm:w-[100%]">
             <div className="flex items-center gap-[40px]">
               <div className="w-[80px] h-[80px] bg-[#8DB338] text-[64px] text-white flex items-center justify-center font-bold">
                 1
-              </div>
-              <div className="flex flex-col gap-[10px] items-start">
-                <h1 className="text-[#585858] text-[20px]">Ассортимент</h1>
-                <h1 className="text-[#585858] text-[14px] text-left">
-                  Домокомплекты из самых разных <br /> пород древесины.
-                </h1>
-              </div>
-            </div>
-            <div className="flex items-center gap-[40px]">
-              <div className="w-[80px] h-[80px] bg-[#8DB338] text-[64px] text-white flex items-center justify-center font-bold">
-                4
               </div>
               <div className="flex flex-col gap-[10px] items-start">
                 <h1 className="text-[#585858] text-[20px]">Ассортимент</h1>
@@ -294,7 +381,7 @@ function Home() {
             </div>
             <div className="flex items-center gap-[40px]">
               <div className="w-[80px] h-[80px] bg-[#8DB338] text-[64px] text-white flex items-center justify-center font-bold">
-                5
+                3
               </div>
               <div className="flex flex-col gap-[10px] items-start">
                 <h1 className="text-[#585858] text-[20px]">Ассортимент</h1>
@@ -305,7 +392,18 @@ function Home() {
             </div>
             <div className="flex items-center gap-[40px]">
               <div className="w-[80px] h-[80px] bg-[#8DB338] text-[64px] text-white flex items-center justify-center font-bold">
-                3
+                4
+              </div>
+              <div className="flex flex-col gap-[10px] items-start">
+                <h1 className="text-[#585858] text-[20px]">Ассортимент</h1>
+                <h1 className="text-[#585858] text-[14px] text-left">
+                  Домокомплекты из самых разных <br /> пород древесины.
+                </h1>
+              </div>
+            </div>
+            <div className="flex items-center gap-[40px]">
+              <div className="w-[80px] h-[80px] bg-[#8DB338] text-[64px] text-white flex items-center justify-center font-bold">
+                5
               </div>
               <div className="flex flex-col gap-[10px] items-start">
                 <h1 className="text-[#585858] text-[20px]">Ассортимент</h1>
@@ -316,12 +414,12 @@ function Home() {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <h1 className="text-[40px] font-semibold absolute">Domosbor</h1>
+            <h1 className="text-[40px] font-semibold absolute text-[#49423D]">Domosbor</h1>
             <img src="http://127.0.0.1:5500/src/assets/logoderevo.svg" />
           </div>
         </div>
       </div>
-      <div className="mt-[100px] w-[100%] h-[100%] bg-gradient-to-r from-[#8DB338] to-[#739A1D] relative z-[10] max-sm:w-[425px]">
+      <div className="mt-[100px] w-[100%] h-[100%] bg-gradient-to-r from-[#8DB338] to-[#739A1D] relative z-[100]">
         <div className="flex items-center m-[60px] justify-center gap-[200px] max-sm:flex-col-reverse">
           <Register bgclr={"#FFFFFF"} inpclr={"#F5F5F6"} />
           <div className="flex flex-col items-start text-left gap-[40px] w-[519px] max-sm:w-[328px]">
@@ -376,7 +474,10 @@ function Home() {
           className="w-[630px] h-[630px] max-sm:w-[328px] max-sm:h-[230px]"
         />
       </div>
-      <div className="flex flex-col items-start gap-[70px] max-sm:items-center">
+      <div className="flex flex-col items-start gap-[70px] max-sm:items-start">
+        <h1 className="text-[40px] font-bold max-sm:text-[28px] text-[#49423D] max-sm:w-[228px] max-sm:text-left">
+          Партнеры сервиса
+        </h1>
         <div className="flex flex-col gap-[40px]">
           <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
@@ -426,9 +527,32 @@ function Home() {
           Стать партнером сервиса
         </button>
       </div>
+      <div className="flex flex-wrap flex-col items-start gap-[20px]">
+        <h1 className="text-[40px] font-bold text-[#49423D]">Магазин</h1>
+        <div className="flex items-start w-[100%] flex-wrap gap-[20px] max-sm:w-[420px] max-sm:flex-col max-sm:items-center">
+          <div className="relative flex items-center max-sm:w-[328px] border-[2px] max-sm:h-[270px]">
+            <h1 className="absolute text-[20px] text-[#49423D] left-[20px] bottom-[20px] font-bold">
+              Фермы на МЗП
+            </h1>
+            <img
+              src="http://127.0.0.1:5500/src/assets/type_back%20(1).svg"
+              className="w-[100%] h-[100%]"
+            />
+          </div>
+          <div className="relative flex items-center max-sm:w-[328px] border-[2px] max-sm:h-[270px]">
+            <h1 className="absolute text-[20px] text-[#49423D] left-[20px] bottom-[20px] font-bold">
+              Наружная отделка
+            </h1>
+            <img
+              src="http://127.0.0.1:5500/src/assets/type_back%20(2).svg"
+              className="w-[100%] h-[100%]"
+            />
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[400px]">
         <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
-          <h1 className="text-[40px] font-bold">Блог</h1>
+          <h1 className="text-[40px] font-bold text-[#49423D]">Блог</h1>
           <h1 className="text-[28px] font-semibold text-[#8DB338]">
             Все блоги
           </h1>
@@ -480,7 +604,7 @@ function Home() {
       </div>
       <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[400px]">
         <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
-          <h1 className="text-[40px] font-bold">Отзывы</h1>
+          <h1 className="text-[40px] font-bold text-[#49423D]">Отзывы</h1>
           <h1 className="text-[28px] font-semibold text-[#8DB338]">
             Все отзывы
           </h1>
@@ -529,7 +653,9 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-start gap-[50px]">
-        <h1 className="text-[40px] font-bold max-sm:text-[28px] max-sm:w-[130px] text-left">Частые вопросы</h1>
+        <h1 className="text-[40px] font-bold max-sm:text-[28px] max-sm:w-[223px] max-sm:text-left text-left">
+          Частые вопросы
+        </h1>
         <div className="flex items-start gap-[100px] w-[1290px] max-sm:w-[400px] max-sm:flex-col max-sm:items-center">
           <div className="flex flex-col items-start gap-[30px] max-sm:items-center">
             <QuestionMenu

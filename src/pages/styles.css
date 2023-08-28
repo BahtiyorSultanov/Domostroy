@@ -46,9 +46,3 @@
   height: 20px;
   background-color: rgba(141, 179, 56, 1) !important;
 }
-.swiper-slide img {
-  display: block;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
