@@ -22,16 +22,15 @@ function Home() {
   const [data, setData] = useState([]);
   let result = [];
   useEffect(() => {
-    projectFirestore
-      .collection("buildingTricks").onSnapshot((data) => {
-        if (!data.empty) {
-          data.docs.forEach((item) => {
-            result.push(item.data());
-            setData(result);
-          });
-        } else {
-        }
-      });
+    projectFirestore.collection("buildingTricks").onSnapshot((data) => {
+      if (!data.empty) {
+        data.docs.forEach((item) => {
+          result.push(item.data());
+          setData(result);
+        });
+      } else {
+      }
+    });
   });
   return (
     <div className="absolute top-[80px] left-0 flex flex-col items-center gap-[100px]">
@@ -56,7 +55,7 @@ function Home() {
               <h1 className="text-[14px] text-[#49423D]">Расширенный поиск</h1>
             </div>
           </div>
-          <select className="px-[44px] py-[13px] bg-[#8DB338] text-white text-[16px] font-bold">
+          <select className="px-[44px] py-[13px] bg-[#8DB338] text-white text-[16px] font-bold sm:hidden">
             <option value="Построить">Построить</option>
             <option value="Бани">Бани</option>
             <option value="Гаражи">Гаражи</option>
@@ -161,10 +160,10 @@ function Home() {
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold">Технологии строительства</h1>
-        <div className="flex items-center w-[1300px] flex-wrap gap-[20px] max-sm:w-[420px]">
+        <div className="flex items-center w-[1300px] flex-wrap gap-[20px] max-sm:w-[420px] max-sm:flex-col">
           {data.map((item) => {
             return (
-              <div className="w-[410px] h-[120px] relative flex items-center">
+              <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[328px]">
                 <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
                   {item.text}
                 </h1>
@@ -176,7 +175,7 @@ function Home() {
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold">Полезные ссылки</h1>
-        <div className="flex items-center">
+        <div className="flex items-center max-sm:hidden">
           <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
             <img src="" className="w-[100%] h-[150px]" />
             <ul className="flex flex-col items-start gap-[10px]">
@@ -190,6 +189,40 @@ function Home() {
             </ul>
           </div>
         </div>
+        <Swiper
+          spaceBetween={1}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <div className="flex items-center">
+              <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
+                <img src="" className="w-[100%] h-[150px]" />
+                <ul className="flex flex-col items-start gap-[10px]">
+                  <li className="text-[16px] font-semibold">
+                    По этажности дома
+                  </li>
+                  <li className="text-[14px] underline">Одноэтажные</li>
+                  <li className="text-[14px] underline">Одноэтажные</li>
+                  <li className="text-[14px] underline">Одноэтажные</li>
+                  <li className="text-[14px] underline">Одноэтажные</li>
+                  <li className="text-[14px] underline">Одноэтажные</li>
+                  <li className="text-[14px] underline">Одноэтажные</li>
+                </ul>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>Slide 9</SwiperSlide>
+        </Swiper>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold">Хиты продаж</h1>
@@ -222,7 +255,7 @@ function Home() {
           <SwiperSlide>Slide 9</SwiperSlide>
         </Swiper>
       </div>
-      <div className="flex flex-col items-start gap-[20px] max-sm:w-[100%]">
+      <div className="flex flex-col items-start gap-[20px] max-sm:w-[100%] max-sm:items-center">
         <h1 className="text-[40px] font-bold">Наши преимущества</h1>
         <div className="flex items-center gap-[100px] max-sm:flex-col">
           <div className="flex items-center flex-wrap gap-[50px] w-[880px] max-sm:flex-col max-sm:w-[100%]">
@@ -343,13 +376,13 @@ function Home() {
           className="w-[630px] h-[630px] max-sm:w-[328px] max-sm:h-[230px]"
         />
       </div>
-      <div className="flex flex-col items-start gap-[70px]">
+      <div className="flex flex-col items-start gap-[70px] max-sm:items-center">
         <div className="flex flex-col gap-[40px]">
           <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
-          <div className="flex items-center max-sm:flex-col max-sm:items-start">
+          <div className="flex items-center max-sm:flex-col max-sm:items-center">
             <div className="max-sm:w-[328px] max-sm:h-[118px] w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
               <div className="text-left">
                 <h1>Кроссовский Виктор</h1>
@@ -364,7 +397,7 @@ function Home() {
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
-          <div className="flex items-center max-sm:flex-col max-sm:items-start">
+          <div className="flex items-center max-sm:flex-col max-sm:items-center">
             <div className="max-sm:w-[328px] max-sm:h-[118px] w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
               <div className="text-left">
                 <h1>Кроссовский Виктор</h1>
@@ -379,7 +412,7 @@ function Home() {
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
-          <div className="flex items-center max-sm:flex-col max-sm:items-start">
+          <div className="flex items-center max-sm:flex-col max-sm:items-center">
             <div className="max-sm:w-[328px] max-sm:h-[118px] w-[410px] h-[150px] bg-[#F5F5F6] flex items-center justify-between px-[20px]">
               <div className="text-left">
                 <h1>Кроссовский Виктор</h1>
@@ -496,9 +529,9 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-start gap-[50px]">
-        <h1 className="text-[40px] font-bold">Частые вопросы</h1>
-        <div className="flex items-start gap-[100px] w-[1290px] max-sm:w-[400px] max-sm:flex-col">
-          <div className="flex flex-col items-start gap-[30px]">
+        <h1 className="text-[40px] font-bold max-sm:text-[28px] max-sm:w-[130px] text-left">Частые вопросы</h1>
+        <div className="flex items-start gap-[100px] w-[1290px] max-sm:w-[400px] max-sm:flex-col max-sm:items-center">
+          <div className="flex flex-col items-start gap-[30px] max-sm:items-center">
             <QuestionMenu
               question={"Вопрос 1 ?"}
               menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
@@ -513,11 +546,11 @@ function Home() {
             />
           </div>
           <div className="flex flex-col items-start gap-[30px]">
-            <div className="text-left">
-              <h1 className="text-[24px] text-[#49423D] font-[600]">
+            <div className="text-left max-sm:w-[200px]">
+              <h1 className="text-[24px] text-[#49423D] font-[600] max-sm:my-[15px]">
                 Не нашли нужный ответ?
               </h1>
-              <h1 className="text-[16px] text-[#49423D] font-[500]">
+              <h1 className="text-[16px] text-[#49423D] font-[500] max-sm:my-[15px]">
                 Мы готовы ответить на любой ваш вопрос!
               </h1>
             </div>
