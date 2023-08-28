@@ -256,7 +256,7 @@ function Home() {
         </Swiper>
       </div>
       <div className="flex flex-col items-start gap-[20px] max-sm:w-[100%] max-sm:items-center">
-        <h1 className="text-[40px] font-bold max-sm:text-[2px] max-sm:w-[228px] max-sm:text-left">Наши преимущества</h1>
+        <h1 className="text-[40px] font-bold max-sm:text-[28px] max-sm:w-[228px] max-sm:text-left">Наши преимущества</h1>
         <div className="flex items-center gap-[100px] max-sm:flex-col">
           <div className="flex items-center flex-wrap gap-[50px] w-[880px] max-sm:flex-col max-sm:w-[100%]">
             <div className="flex items-center gap-[40px]">
