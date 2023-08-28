@@ -4,9 +4,9 @@ import { MdOutlineExitToApp, MdMenu } from "react-icons/md";
 import { TbArrowsLeftRight, TbPhone } from "react-icons/tb";
 function Navbar() {
   return (
-    <div className="absolute top-0 left-0 w-[100%] h-[80px] flex flex-col max-sm:h-[60px]">
-      <div className="flex flex-col gap-[40px] pr-[125px]">
-        <div className="flex items-end justify-center gap-[100px] max-sm:justify-between max-sm:px-[40px]">
+    <div className="absolute top-0 left-0 w-[100%] h-[80px] flex flex-col max-sm:h-[60px] items-center max-sm:pl-[60px]">
+      <div className="flex flex-col items-center gap-[40px]">
+        <div className="flex items-end justify-end gap-[100px] max-sm:justify-between max-sm:px-[40px]">
           <div className="flex gap-[15px] max-sm:hidden">
             <button>
               <img src="http://127.0.0.1:5500/src/assets/Menu.svg" />
