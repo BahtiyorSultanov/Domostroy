@@ -10,31 +10,31 @@ function Register({bgclr, inpclr}) {
             placeholder="Имя"
             type="text"
             style={{background:inpclr}}
-            className="pl-[16px] w-[350px] py-[9px] px-[16px 8px]"
+            className="pl-[16px] w-[350px] max-sm:w-[268px] py-[9px] px-[16px 8px]"
           />
           <input
             placeholder="Имя"
             type="text"
             style={{background:inpclr}}
-            className="pl-[16px] w-[350px] py-[9px] px-[16px 8px]"
+            className="pl-[16px] w-[350px] max-sm:w-[268px] py-[9px] px-[16px 8px]"
           />
           <input
             placeholder="Имя"
             type="text"
             style={{background:inpclr}}
-            className="pl-[16px] w-[350px] py-[9px] px-[16px 8px]"
+            className="pl-[16px] w-[350px] max-sm:w-[268px] py-[9px] px-[16px 8px]"
           />
           <input
             placeholder="Имя"
             type="text"
             style={{background:inpclr}}
-            className="pl-[16px] w-[350px] h-[120px]"
+            className="pl-[16px] w-[350px] max-sm:w-[268px] h-[120px]"
           />
           <div className="flex items-center gap-[30px]">
             <button className="cursor-pointer"><FaPlus className="text-[#8DB338]" /></button>
             <h1 className="text-[14px] text-[#49423D]">Прикрепить файлы</h1>
           </div>
-          <button className="bg-[#8DB338] w-[350px] py-[9px] text-white text-[14px] font-bold">
+          <button className="bg-[#8DB338] w-[350px] max-sm:w-[268px] py-[9px] text-white text-[14px] font-bold">
             Отправить
           </button>
           <div className="flex items-start gap-[25px] text-[#8DB338]">

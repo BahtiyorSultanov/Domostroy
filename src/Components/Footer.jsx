@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="absolute top-[9500px] left-0 w-[100%] h-[581px] bg-[#1C1C1C] flex flex-col items-center gap-[100px] pt-[70px] max-sm:hidden">
-      <div className="flex items-start gap-[70px] relative z-10">
+    <div className="absolute top-[9500px] left-0 w-[100%] h-[581px] bg-[#1C1C1C] flex flex-col items-center gap-[100px] pt-[70px] max-sm:top-[12800px] max-sm:w-[448px] max-sm:h-[2125px]">
+      <div className="flex items-start gap-[70px] relative z-10 max-sm:flex-col">
         <ul className="footUl">
           <NavLink>
             <li>
@@ -98,7 +98,7 @@ function Footer() {
             <li className="hover:text-[#8DB338]">Заводы</li>
           </NavLink>
         </ul>
-        <ul className="text-right items-end flex flex-col gap-[10px]">
+        <ul className="text-right items-end flex flex-col gap-[10px] max-sm:text-center max-sm:items-center">
           <h1 className="text-[16px] text-[#8DB338] font-semibold">
             DOMOSBOR - Магазин
           </h1>
@@ -122,7 +122,7 @@ function Footer() {
         </ul>
       </div>
       <div className="flex flex-col items-center gap-[20px]">
-        <div className="flex items-center gap-[30px] icons">
+        <div className="flex items-center max-sm:justify-center gap-[30px] max-sm:flex-wrap max-sm:w-[207px] icons">
           <img src="http://127.0.0.1:5500/src/assets/Odnoklasniki.svg" alt="" />
           <img src="http://127.0.0.1:5500/src/assets/dzen.svg" alt="" />
           <img src="" alt="" />
