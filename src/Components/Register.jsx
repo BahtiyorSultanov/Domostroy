@@ -4,7 +4,7 @@ import { TbBrandTelegram, TbPhoneCall, TbPhone } from "react-icons/tb";
 function Register({bgclr, inpclr}) {
   return (
     <div>
-      <form className={`p-[30px] relative z-[20]`} style={{background:bgclr}}>
+      <form className={`p-[30px] max-sm:p-[20px] relative z-[20]`} style={{background:bgclr}}>
         <div className="flex flex-col items-center gap-[30px] relative z-[7]">
           <input
             placeholder="Имя"

@@ -4,25 +4,24 @@ import Slider from "../Components/Slider";
 import SliderComponent from "../Components/Slider";
 import BuildingSelect from "../Components/BuildingSelect";
 import SurfaceSelect from "../Components/SurfaceSelect";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-import "./styles.css";
-
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Register from "../Components/Register";
-import QuestionMenu from "../Components/QuestionMenu";
 import { projectFirestore } from "../Firebase/Config";
+import QuestionComponent from "../Components/QuestionComponent";
+import Register from "../Components/Register";
+import Swipper from "../Components/Swiper";
+
 function Home() {
   const [data, setData] = useState([]);
-  let result = [];
+  const [topSellers, setTopSellers] = useState([]);
+  const [blog, setBlog] = useState([]);
+  const [feedback, setFeedback] = useState([]);
   useEffect(() => {
     projectFirestore.collection("buildingTricks").onSnapshot((data) => {
+      let result = [];
       if (!data.empty) {
         data.docs.forEach((item) => {
           result.push(item.data());
@@ -31,11 +30,41 @@ function Home() {
       } else {
       }
     });
+    projectFirestore.collection("topSellers").onSnapshot((data) => {
+      let result = [];
+      if (!data.empty) {
+        data.docs.forEach((item) => {
+          result.push(item.data());
+          setTopSellers(result);
+        });
+      } else {
+      }
+    });
+    projectFirestore.collection("blog").onSnapshot((data) => {
+      let result = [];
+      if (!data.empty) {
+        data.docs.forEach((item) => {
+          result.push(item.data());
+          setBlog(result);
+        });
+      } else {
+      }
+    });
+    projectFirestore.collection("feedback").onSnapshot((data) => {
+      let result = [];
+      if (!data.empty) {
+        data.docs.forEach((item) => {
+          result.push(item.data());
+          setFeedback(result);
+        });
+      } else {
+      }
+    });
   });
   return (
-    <div className="absolute top-[80px] left-0 flex flex-col items-center gap-[100px]">
+    <div className="absolute top-[80px] left-0 flex flex-col items-center gap-[100px] w-[100%]">
       <div className="">
-        <div className="border-[2px] m-[40px] mt-[350px] px-[20px] py-[20px] flex flex-col gap-[60px] bg-white max-sm:w-[328px] max-sm:m-0">
+        <div className="border-[2px] m-[40px] mt-[350px] px-[20px] py-[20px] flex flex-col gap-[60px] bg-white max-sm:w-[100%] max-sm:m-0 max-sm:p-[10px]">
           <div className="flex items-center gap-[472px] max-sm:hidden">
             <div className="flex gap-[40px] max-sm:flex-col">
               <button className="w-[190px] py-[13px] bg-[#F5F5F6] focus:bg-[#8DB338] focus:text-white focus:font-bold text-[16px] text-[#49423D]">
@@ -160,7 +189,7 @@ function Home() {
           </div>
         </div>
         <div className="sm:hidden">
-          <Swiper
+          {/* <Swiper
             spaceBetween={1}
             centeredSlides={true}
             autoplay={{
@@ -246,17 +275,17 @@ function Home() {
                 </div>
               </SwiperSlide>
             </div>
-          </Swiper>
+          </Swiper> */}
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
-        <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
+        <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[100%] max-sm:text-left">
           Технологии строительства
         </h1>
-        <div className="flex items-center w-[100%] flex-wrap gap-[20px] max-sm:w-[420px] max-sm:flex-col">
+        <div className="flex items-center w-[100%] flex-wrap gap-[20px] max-sm:w-[100%] max-sm:flex-col">
           {data.map((item) => {
             return (
-              <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[328px]">
+              <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[100%]">
                 <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
                   {item.text}
                 </h1>
@@ -284,7 +313,7 @@ function Home() {
             </ul>
           </div>
         </div>
-        <Swiper
+        {/* <Swiper
           spaceBetween={1}
           centeredSlides={true}
           autoplay={{
@@ -317,40 +346,13 @@ function Home() {
             </div>
           </SwiperSlide>
           <SwiperSlide>Slide 9</SwiperSlide>
-        </Swiper>
+        </Swiper> */}
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
           Хиты продаж
         </h1>
-        <Swiper
-          spaceBetween={1}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className="flex items-center">
-              <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
-                <img src="" className="w-[100%] h-[150px]" />
-                <ul className="flex flex-col items-start gap-[10px]">
-                  <li className="text-[14px] ">Одноэтажные</li>
-                  <li className="text-[14px] ">Одноэтажные</li>
-                  <li className="text-[14px] ">Одноэтажные</li>
-                </ul>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
-        </Swiper>
+        <Swipper data={topSellers} />
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[228px] max-sm:text-left">
@@ -418,14 +420,17 @@ function Home() {
             <h1 className="text-[40px] font-semibold absolute text-[#49423D]">
               Domosbor
             </h1>
-            <img src="http://127.0.0.1:5500/src/assets/logoderevo.svg" />
+            <img
+              src="http://127.0.0.1:5500/src/assets/logoderevo.svg"
+              className="max-sm:w-[300px]"
+            />
           </div>
         </div>
       </div>
       <div className="mt-[100px] w-[100%] h-[100%] bg-gradient-to-r from-[#8DB338] to-[#739A1D] relative z-[100]">
         <div className="flex items-center m-[60px] justify-center gap-[200px] max-sm:flex-col-reverse">
           <Register bgclr={"#FFFFFF"} inpclr={"#F5F5F6"} />
-          <div className="flex flex-col items-start text-left gap-[40px] w-[519px] max-sm:w-[328px]">
+          <div className="flex flex-col items-start text-left gap-[40px] w-[519px] max-sm:w-[100%]">
             <h1 className="text-white text-[40px] font-bold">
               Расчёт стоимости <br /> по вашему проекту
             </h1>
@@ -443,9 +448,11 @@ function Home() {
         </div>
       </div>
       <div className="flex items-end gap-[150px] max-sm:flex-col-reverse">
-        <div className="w-[590px] text-[#49423D] text-left flex flex-col gap-[50px] max-sm:w-[328px]">
-          <h1 className="text-[40px] font-bold">О сервисе</h1>
-          <h1>
+        <div className="w-[590px] text-[#49423D] text-left flex flex-col gap-[50px] max-sm:w-[100%]">
+          <h1 className="text-[40px] max-sm:text-[28px] font-bold">
+            О сервисе
+          </h1>
+          <h1 className="max-sm:text-[16px]">
             <b>DOMOSBOR</b> — уникальный сервис, который объединяет лучших
             производителей домокомплектов (частные дома, дачи, бани, гаражи,
             навесы, коммерческие постройки), архитекторов, дизайнеров,
@@ -454,7 +461,7 @@ function Home() {
             всё понятно на интуитивном уровне, благодаря чему несложно подобрать
             для себя подходящее решение и заказать интересующие вас услуги.
           </h1>
-          <h1>
+          <h1 className="max-sm:hidden">
             Сегодня <b>DOMOSBOR</b> — это 30 производителей, 8 технологий
             деревянного домостроения, 1253 проектных предложений в разных
             ценовых сегментах от российских и зарубежных производителей.
@@ -462,27 +469,27 @@ function Home() {
             на все существующие методы строительства деревянных домов. Чему
             отдать предпочтение? Решать только вам!
           </h1>
-          <h1>
+          <h1 className="max-sm:hidden">
             Выбирайте необходимые вам параметры (географическое положение,
             окружающий ландшафт) и сравнивайте приглянувшиеся проекты. С нами
             дом мечты — реальность! Не откладывайте с реализацией своих задумок,
             обращайтесь прямо сейчас!
           </h1>
-          <button className="bg-[#8DB338] w-[350px] py-[9px] text-white text-[14px] font-bold">
+          <button className="bg-[#8DB338] w-[100%] py-[9px] text-white text-[14px] font-bold">
             Подробнее
           </button>
         </div>
         <img
           src=""
-          className="w-[630px] h-[630px] max-sm:w-[328px] max-sm:h-[230px]"
+          className="w-[630px] h-[630px] max-sm:w-[100%] max-sm:h-[230px]"
         />
       </div>
-      <div className="flex flex-col items-start gap-[70px] max-sm:items-start">
+      <div className="flex flex-col items-start gap-[70px] max-sm:items-center max-sm:w-[100%]">
         <h1 className="text-[40px] font-bold max-sm:text-[28px] text-[#49423D] max-sm:w-[228px] max-sm:text-left">
           Партнеры сервиса
         </h1>
         <div className="flex flex-col gap-[40px]">
-          <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
+          <div className="flex w-[1290px] justify-between max-sm:w-[100%] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
@@ -497,7 +504,7 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col gap-[40px]">
-          <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
+          <div className="flex w-[1290px] justify-between max-sm:w-[100%] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
@@ -512,7 +519,7 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col gap-[40px]">
-          <div className="flex w-[1290px] justify-between max-sm:w-[400px] max-sm:flex-col max-sm:items-start">
+          <div className="flex w-[1290px] justify-between max-sm:w-[100%] max-sm:flex-col max-sm:items-start">
             <h1 className="text-[24px] text-[#49423D]">Архитекторы</h1>
             <h1 className="text-[14px] text-[#8DB338]">Все архитекторы</h1>
           </div>
@@ -526,14 +533,14 @@ function Home() {
             </div>
           </div>
         </div>
-        <button className="bg-[#8DB338] w-[350px] py-[9px] text-white text-[14px] font-bold">
+        <button className="bg-[#8DB338] w-[100%] py-[9px] text-white text-[14px] font-bold">
           Стать партнером сервиса
         </button>
       </div>
       <div className="flex flex-wrap flex-col items-start gap-[20px]">
         <h1 className="text-[40px] font-bold text-[#49423D]">Магазин</h1>
-        <div className="flex items-start w-[100%] flex-wrap gap-[20px] max-sm:w-[420px] max-sm:flex-col max-sm:items-center">
-          <div className="relative flex items-center max-sm:w-[328px] border-[2px] max-sm:h-[270px]">
+        <div className="flex items-start w-[100%] flex-wrap gap-[20px] max-sm:w-[100%] max-sm:flex-col max-sm:items-center">
+          <div className="relative flex items-center max-sm:w-[100%] border-[2px] max-sm:h-[270px]">
             <h1 className="absolute text-[20px] text-[#49423D] left-[20px] bottom-[20px] font-bold">
               Фермы на МЗП
             </h1>
@@ -542,7 +549,7 @@ function Home() {
               className="w-[100%] h-[100%]"
             />
           </div>
-          <div className="relative flex items-center max-sm:w-[328px] border-[2px] max-sm:h-[270px]">
+          <div className="relative flex items-center max-sm:w-[100%] border-[2px] max-sm:h-[270px]">
             <h1 className="absolute text-[20px] text-[#49423D] left-[20px] bottom-[20px] font-bold">
               Наружная отделка
             </h1>
@@ -553,7 +560,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[400px]">
+      <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[100%]">
         <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
           <h1 className="text-[40px] font-bold text-[#49423D]">Блог</h1>
           <h1 className="text-[28px] font-semibold text-[#8DB338]">
@@ -561,51 +568,10 @@ function Home() {
           </h1>
         </div>
         <div className="flex items-center">
-          {/* <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px] max-sm:hidden">
-            <img src="" className="w-[234px] h-[234px]" />
-            <div className="text-left my-[10px]">
-              <h1 className="text-[16px] font-[600] text-[#49423D]">
-                My House
-              </h1>
-              <h1 className="text-[14px] font-[400] text-[#909090]">
-                Переосмысленный сарай с уютным характером
-              </h1>
-            </div>
-          </div> */}
-          <Swiper
-            spaceBetween={1}
-            centeredSlides={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <div className="flex items-center">
-                <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
-                  <img src="" className="w-[234px] h-[234px]" />
-                  <div className="text-left my-[10px]">
-                    <h1 className="text-[16px] font-[600] text-[#49423D]">
-                      My House
-                    </h1>
-                    <h1 className="text-[14px] font-[400] text-[#909090]">
-                      Переосмысленный сарай с уютным характером
-                    </h1>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>Slide 9</SwiperSlide>
-          </Swiper>
+          <Swipper data={blog}/>
         </div>
       </div>
-      <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[400px]">
+      <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[100%]">
         <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
           <h1 className="text-[40px] font-bold text-[#49423D]">Отзывы</h1>
           <h1 className="text-[28px] font-semibold text-[#8DB338]">
@@ -613,80 +579,10 @@ function Home() {
           </h1>
         </div>
         <div className="flex items-center">
-          {/* <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px] max-sm:hidden">
-            <video src="" className="w-[234px] h-[360px]"></video>
-            <div className="text-left my-[10px]">
-              <h1 className="text-[16px] font-[600] text-[#49423D]">
-                My House
-              </h1>
-              <h1 className="text-[14px] font-[400] text-[#909090]">
-                Переосмысленный сарай с уютным характером
-              </h1>
-            </div>
-          </div> */}
-          <Swiper
-            spaceBetween={1}
-            centeredSlides={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
-              <div className="flex flex-col items-center w-[234px] border-[2px] gap-[20px]">
-                <video src="" className="w-[234px] h-[360px]"></video>
-                <div className="text-left my-[10px]">
-                  <h1 className="text-[16px] font-[600] text-[#49423D]">
-                    My House
-                  </h1>
-                  <h1 className="text-[14px] font-[400] text-[#909090]">
-                    Переосмысленный сарай с уютным характером
-                  </h1>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>Slide 9</SwiperSlide>
-          </Swiper>
+          <Swipper data={feedback}/>
         </div>
       </div>
-      <div className="flex flex-col items-start gap-[50px]">
-        <h1 className="text-[40px] font-bold max-sm:text-[28px] max-sm:w-[223px] max-sm:text-left text-left">
-          Частые вопросы
-        </h1>
-        <div className="flex items-start gap-[100px] w-[1290px] max-sm:w-[400px] max-sm:flex-col max-sm:items-center">
-          <div className="flex flex-col items-start gap-[30px] max-sm:items-center">
-            <QuestionMenu
-              question={"Вопрос 1 ?"}
-              menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
-            />
-            <QuestionMenu
-              question={"Вопрос 1 ?"}
-              menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
-            />
-            <QuestionMenu
-              question={"Вопрос 1 ?"}
-              menuInfo={<video src="" className="w-[730px] h-[400px]"></video>}
-            />
-          </div>
-          <div className="flex flex-col items-start gap-[30px]">
-            <div className="text-left max-sm:w-[200px]">
-              <h1 className="text-[24px] text-[#49423D] font-[600] max-sm:my-[15px]">
-                Не нашли нужный ответ?
-              </h1>
-              <h1 className="text-[16px] text-[#49423D] font-[500] max-sm:my-[15px]">
-                Мы готовы ответить на любой ваш вопрос!
-              </h1>
-            </div>
-            <Register bgclr={"#F5F5F6"} inpclr={"white"} />
-          </div>
-        </div>
-      </div>
+      <QuestionComponent />
     </div>
   );
 }

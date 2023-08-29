@@ -48,15 +48,23 @@ element.style {
   left: 80px;
   transform-origin: 0px 0px;
 }
-.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-  width: 770px;
-  position: relative !important;
-  top: 100px !important;
-  left: 80px !important;
+@media screen and (min-width: 426px) {
+  .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    width: 770px;
+    position: relative !important;
+    top: 100px !important;
+    left: 80px !important;
+  }
 }
 @media screen and (max-width: 426px) {
+  .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    width: 3200px;
+    position: relative !important;
+    top: 100px !important;
+    left: 80px !important;
+  }
   .menu-opener {
-    width: 328px !important;
+    width: 320px !important;
     background-color: #f5f5f6 !important;
     padding: 20px !important;
     display: flex !important;
@@ -84,4 +92,12 @@ element.style {
     top: 100px !important;
     left: 80px !important;
   }
+}
+.EZDrawer__container {
+  position: absolute !important;
+  top: 80px !important;
+}
+.EZDrawer__overlay {
+  position: absolute !important;
+  top: 80px !important;
 }
