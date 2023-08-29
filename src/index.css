@@ -96,6 +96,7 @@ element.style {
 .EZDrawer__container {
   position: absolute !important;
   top: 80px !important;
+  height: auto !important;
 }
 .EZDrawer__overlay {
   position: absolute !important;
