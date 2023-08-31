@@ -41,7 +41,7 @@ function BestSellerItem() {
   console.log(allTopSells);
   const [open, setOpen] = useState(false);
   return (
-    <div className="mt-[30px] flex flex-col items-start w-[100%]">
+    <div className="mt-[30px] flex flex-col items-start h-[100%] w-[100%]">
       <div className="flex flex-col items-start gap-[50px]">
         <h1 className="text-[40px] text-[#49423D] max-sm:text-[28px]">{topSellers.h1}</h1>
         <div className="flex items-start max-sm:flex-col gap-[100px]">
@@ -266,7 +266,7 @@ function BestSellerItem() {
             </div>
           </div>
         </div>
-        <div className="top-[0px] w-[100%] h-[100%] bg-gradient-to-r from-[#8DB338] to-[#739A1D] relative left-0 z-[100]">
+        <div className="relative top-[0px] w-[100%] bg-gradient-to-r from-[#8DB338] to-[#739A1D] left-auto">
           <div className="flex items-center m-[60px] justify-center gap-[200px] max-sm:m-[10px] max-sm:flex-col-reverse">
             <Register bgclr={"#FFFFFF"} inpclr={"#F5F5F6"} />
             <div className="flex flex-col items-start text-left gap-[40px] w-[519px] max-sm:w-[100%]">

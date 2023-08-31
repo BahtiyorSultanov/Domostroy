@@ -59,7 +59,7 @@ function Home() {
     }
   )
   return (
-    <div className="absolute top-[80px] left-0 flex flex-col items-center gap-[100px] w-[100%]">
+    <div className="flex flex-col items-center gap-[100px] h-[100%] w-[100%]">
       <div className="">
         <div className="border-[2px] m-[40px] mt-[350px] px-[20px] py-[20px] flex flex-col gap-[60px] bg-white max-sm:w-[100%] max-sm:m-0 max-sm:p-[10px]">
           <div className="flex items-center gap-[472px] max-sm:hidden">
