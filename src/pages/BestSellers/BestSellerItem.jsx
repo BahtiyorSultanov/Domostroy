@@ -43,7 +43,7 @@ function BestSellerItem() {
   return (
     <div className="mt-[30px] flex flex-col items-start w-[100%]">
       <div className="flex flex-col items-start gap-[50px]">
-        <h1 className="text-[40px] text-[#49423D]">{topSellers.h1}</h1>
+        <h1 className="text-[40px] text-[#49423D] max-sm:text-[28px]">{topSellers.h1}</h1>
         <div className="flex items-start max-sm:flex-col gap-[100px]">
           <div className="flex flex-col items-start gap-0">
             <div className="flex items-end max-sm:hidden">
@@ -145,7 +145,7 @@ function BestSellerItem() {
           </div>
         </div>
         <div className="flex flex-col items-start gap-[50px]">
-          <h1 className="text-[40px] font-bold text-[#49423D]">
+          <h1 className="text-[40px] max-sm:text-[28px] font-bold text-[#49423D]">
             Описание проекта
           </h1>
           <div className="flex items-center gap-[100px] max-sm:flex-col max-sm:w-[320px]">
@@ -158,7 +158,7 @@ function BestSellerItem() {
           </div>
         </div>
         <div className="flex flex-col items-start gap-[50px] max-sm:w-[320px]">
-          <h1 className="text-[40px] font-bold text-[#49423D]">
+          <h1 className="text-[40px] max-sm:text-[28px] font-bold text-[#49423D]">
             Общая информация
           </h1>
           <ul className="text-[16px] flex flex-wrap w-[1260px] gap-[20px] max-sm:w-[320px]">
@@ -270,16 +270,16 @@ function BestSellerItem() {
           <div className="flex items-center m-[60px] justify-center gap-[200px] max-sm:m-[10px] max-sm:flex-col-reverse">
             <Register bgclr={"#FFFFFF"} inpclr={"#F5F5F6"} />
             <div className="flex flex-col items-start text-left gap-[40px] w-[519px] max-sm:w-[100%]">
-              <h1 className="text-white text-[40px] font-bold">
+              <h1 className="text-white text-[40px] max-sm:text-[28px] font-bold">
                 Расчёт стоимости <br /> по вашему проекту
               </h1>
-              <h1 className="text-white text-[20px] font-[350]">
+              <h1 className="text-white text-[20px] max-sm:text-[16px] font-[350]">
                 Мы считаем большим заблуждением, когда клиенты выбирают
                 архитектурную студию по стоимости проектирования. В частном
                 жилом строительстве есть правило: стоимость проекта составляет
                 5−10% от стоимости его реализации.
               </h1>
-              <h1 className="text-white text-[20px] font-[350]">
+              <h1 className="text-white text-[20px] max-sm:text-[16px] font-[350]">
                 Не откладывайте с реализацией своих задумок, <br /> обращайтесь
                 прямо сейчас!
               </h1>
@@ -288,7 +288,7 @@ function BestSellerItem() {
         </div>
         <div className="flex flex-col items-start gap-[20px]">
           <div className="flex items-center justify-between w-[1290px] max-sm:w-[328px] max-sm:flex-col max-sm:text-left max-sm:items-start">
-            <h1 className="text-[40px] font-bold text-[#49423D]">
+            <h1 className="text-[40px] max-sm:text-[28px] font-bold text-[#49423D]">
               Похожие проекты
             </h1>
             <h1 className="text-[20px] font-medium text-[#8DB338]">
