@@ -9,6 +9,7 @@ import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { Context } from "../context/Context";
 import { NavLink } from "react-router-dom";
+import MenuUls from "./MenuUls";
 function Navbar() {
   const { isOpen, color, changeColor, isOpener } = useContext(Context);
   console.log(isOpen);
@@ -29,23 +30,27 @@ function Navbar() {
               />
             )}
             <RiSearchLine className="text-[20px] cursor-pointer" />
-            <button className="focus:bg-[#8DB338] focus:text-white text-[12px] font-bold p-[7px]">
-              
-            </button>
+            <button className="focus:bg-[#8DB338] focus:text-white text-[12px] font-bold p-[7px]"></button>
             <button className="focus:bg-[#8DB338] focus:text-white text-[12px] font-bold p-[7px]">
               EN
             </button>
           </div>
-          <img
-            src="http://127.0.0.1:5500/src/assets/Logo.svg"
-            className=" m-[0px auto]"
-          />
+          <NavLink to="/">
+            <img
+              src="http://127.0.0.1:5500/src/assets/Logo.svg"
+              className=" m-[0px auto]"
+            />
+          </NavLink>
           <div className="flex gap-[15px] text-[24px] text-[#8DB338] sm:hidden">
             <TbPhone />
-            {isOpen ? <MdClose onClick={isOpener}/> : <MdMenu onClick={isOpener} />}
+            {isOpen ? (
+              <MdClose onClick={isOpener} />
+            ) : (
+              <MdMenu onClick={isOpener} />
+            )}
           </div>
           <Drawer open={isOpen} direction="top" className="">
-            <div className="">
+            <div className="w-[100%]">
               <div className="flex flex-col items-center gap-[80px] px-[75px] py-[40px] max-sm:hidden">
                 <div className="flex items-center justify-between w-[100%]">
                   <button className="w-[410px] px-[45px] py-[12px] focus:bg-[#8DB338] text-[16px] focus:text-white text-[#909090] bg-[#F5F5F6]">
@@ -59,144 +64,160 @@ function Navbar() {
                   </button>
                 </div>
                 <div className="flex items-start flex-wrap w-[100%] gap-x-[180px] gap-y-[50px]">
-                  <ul className="w-[300px] text-[#49423D] text-[16px] flex flex-col items-start gap-[12px]">
-                    <NavLink>
-                      <h1 className="text-[20px] text-[#8DB338]">
-                        DOMOSBOR - Магазин
-                      </h1>
-                    </NavLink>
-                    <NavLink>
-                      <h1 className="text-[20px] text-[#8DB338]">
-                        DOMOSBOR - Магазин
-                      </h1>
-                    </NavLink>
-                    <h1 className="text-[20px] text-[#8DB338]">
-                      Типы строений
-                    </h1>
-                    <NavLink>
-                      <li>Дома</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Бани</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Гаражи</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Навесы</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Коммерческие объекты</li>
-                    </NavLink>
-                  </ul>
-                  <ul className="w-[300px] text-[#49423D] text-[16px] flex flex-col items-start gap-[12px]">
-                    <h1 className="text-[20px] text-[#8DB338]">Технологии</h1>
-                    <NavLink>
-                      <li>Клееный брус</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Лафет</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Лафет</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Рубленное бревно</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Каркасные</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>CLT панели</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Панельно-каркасные</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Kelo (кело)</li>
-                    </NavLink>
-                  </ul>
-                  <ul className="w-[300px] text-[#49423D] text-[16px] flex flex-col items-start gap-[12px]">
-                    <h1 className="text-[20px] text-[#8DB338]">Магазин</h1>
-                    <NavLink>
-                      <li>Фермы на МЗП</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Фермы на МЗП</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Отделка бань и саун</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Термодревисина</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Терраса</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Крашенная древисина</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Внутренняя отделка</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Окна</li>
-                    </NavLink>
-                  </ul>
-                  <ul className="w-[300px] text-[#49423D] text-[16px] flex flex-col items-start gap-[12px]">
-                    <h1 className="text-[20px] text-[#8DB338]">Сервис</h1>
-                    <NavLink>
-                      <li>О сервисе</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Галерея</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Галерея</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Блог</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Отзывы</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Услуги</li>
-                    </NavLink>
-                  </ul>
-                  <ul className="w-[300px] text-[#49423D] text-[16px] flex flex-col items-start gap-[12px]">
-                    <h1 className="text-[20px] text-[#8DB338]">Информация</h1>
-                    <NavLink>
-                      <li>Оплата</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Документы</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Контакты</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Контакты</li>
-                    </NavLink>
-                  </ul>
-                  <ul className="w-[300px] text-[#49423D] text-[16px] flex flex-col items-start gap-[12px]">
-                    <h1 className="text-[20px] text-[#8DB338]">
-                      Партнеры сервиса
-                    </h1>
-                    <NavLink>
-                      <li>Архитекторы</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Дизайнеры</li>
-                    </NavLink>
-                    <NavLink>
-                      <li>Заводы</li>
-                    </NavLink>
-                  </ul>
+                  <MenuUls
+                    h1={[
+                      "DOMOSBOR - Магазин",
+                      "DOMOSBOR - Магазин",
+                      "Типы строений",
+                    ]}
+                    lis={[
+                      "Дома",
+                      "Бани",
+                      "Гаражи",
+                      "Навесы",
+                      "Коммерческие объекты",
+                    ]}
+                  />
+                  <MenuUls
+                    h1={["Технологии"]}
+                    lis={[
+                      "Клееный брус",
+                      "Лафет",
+                      "Рубленное бревно",
+                      "Каркасные",
+                      "CLT панели",
+                      "Панельно-каркасные",
+                      "Kelo (кело)",
+                    ]}
+                  />
+                  <MenuUls
+                    h1={["Магазин"]}
+                    lis={[
+                      "Фермы на МЗП",
+                      "Наружная отделка",
+                      "Отделка бань и саун",
+                      "Термодревисина",
+                      "Терраса",
+                      "Крашенная древисина",
+                      "Внутренняя отделка",
+                      "Окна",
+                    ]}
+                  />
+                  <MenuUls
+                    h1={["Сервис"]}
+                    lis={["О сервисе", "Галерея", "Блог", "Отзывы", "Услуги"]}
+                  />
+                  <MenuUls
+                    h1={["Информация"]}
+                    lis={["Оплата", "Документы", "Контакты", "Сотрудничество"]}
+                  />
+                  <MenuUls
+                    h1={["Партнеры сервиса"]}
+                    lis={["Архитекторы", "Дизайнеры", "Заводы"]}
+                  />
                 </div>
               </div>
-              <div className="flex flex-col items-center gap-[80px] px-[16px] py-[30px] sm:hidden">
-
+              <div className="flex flex-col items-center gap-[80px] w-[100%] px-[16px] py-[30px] sm:hidden">
+                <div className="flex flex-col items-center w-[100%]">
+                  <div className="flex items-center w-[100%] justify-between">
+                    <div className="flex items-center">
+                      <button className="focus:bg-[#8DB338] focus:text-white text-[12px] font-bold p-[7px]">
+                        RU
+                      </button>
+                      <button className="focus:bg-[#8DB338] focus:text-white text-[12px] font-bold p-[7px]">
+                        EN
+                      </button>
+                    </div>
+                    <div className="flex items-center gap-[15px]">
+                      <button className="text-[#8DB338]">
+                        <TbArrowsLeftRight />
+                      </button>
+                      <button className="text-[#8DB338]">
+                        <AiOutlineHeart />
+                      </button>
+                      <button className="text-[#8DB338]">
+                        <MdOutlineExitToApp />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex justify-start items-end gap-[10px] w-[100%]">
+                    <RiSearchLine className="text-[20px] text-[#8DB338]" />
+                    <input
+                      placeholder="Поиск..."
+                      type="text"
+                      className="border-b-2 border-[#8DB338] text-[14px] text-[#909090] w-[100%]"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex flex-col text-center">
+                      <h1 className="text-[20px] text-[#49423D] font-bold">
+                        8 (800) 301-50-51
+                      </h1>
+                      <h1 className="text-[#8DB338] text-[12px]">
+                        Заказать обратный звонок
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center flex-wrap w-[100%] gap-x-[180px] gap-y-[50px]">
+                  <NavLink>
+                    <h1 className="text-[20px] text-[#8DB338]">
+                      DOMOSBOR - Магазин
+                    </h1>
+                  </NavLink>
+                  <NavLink>
+                    <h1 className="text-[20px] text-[#8DB338]">
+                      DOMOSBOR - Магазин
+                    </h1>
+                  </NavLink>
+                  <MenuUls
+                    h1={["Типы строений"]}
+                    lis={[
+                      "Дома",
+                      "Бани",
+                      "Гаражи",
+                      "Навесы",
+                      "Коммерческие объекты",
+                    ]}
+                  />
+                  <MenuUls
+                    h1={["Технологии"]}
+                    lis={[
+                      "Клееный брус",
+                      "Лафет",
+                      "Рубленное бревно",
+                      "Каркасные",
+                      "CLT панели",
+                      "Панельно-каркасные",
+                      "Kelo (кело)",
+                    ]}
+                  />
+                  <MenuUls
+                    h1={["Магазин"]}
+                    lis={[
+                      "Фермы на МЗП",
+                      "Наружная отделка",
+                      "Отделка бань и саун",
+                      "Термодревисина",
+                      "Терраса",
+                      "Крашенная древисина",
+                      "Внутренняя отделка",
+                      "Окна",
+                    ]}
+                  />
+                  <MenuUls
+                    h1={["Сервис"]}
+                    lis={["О сервисе", "Галерея", "Блог", "Отзывы", "Услуги"]}
+                  />
+                  <MenuUls
+                    h1={["Информация"]}
+                    lis={["Оплата", "Документы", "Контакты", "Сотрудничество"]}
+                  />
+                  <MenuUls
+                    h1={["Партнеры сервиса"]}
+                    lis={["Архитекторы", "Дизайнеры", "Заводы"]}
+                  />
+                </div>
               </div>
             </div>
           </Drawer>

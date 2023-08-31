@@ -4,8 +4,6 @@ import Slider from "../Components/Slider";
 import SliderComponent from "../Components/Slider";
 import BuildingSelect from "../Components/BuildingSelect";
 import SurfaceSelect from "../Components/SurfaceSelect";
-// import { Swiper, SwiperSlide } from "swiper/react";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -13,9 +11,11 @@ import { projectFirestore } from "../Firebase/Config";
 import QuestionComponent from "../Components/QuestionComponent";
 import Register from "../Components/Register";
 import Swipper from "../Components/Swiper";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 function Home() {
-  const [data, setData] = useState([]);
+  const [datta, setDatta] = useState([]);
   const [topSellers, setTopSellers] = useState([]);
   const [blog, setBlog] = useState([]);
   const [feedback, setFeedback] = useState([]);
@@ -24,18 +24,8 @@ function Home() {
       let result = [];
       if (!data.empty) {
         data.docs.forEach((item) => {
-          result.push(item.data());
-          setData(result);
-        });
-      } else {
-      }
-    });
-    projectFirestore.collection("topSellers").onSnapshot((data) => {
-      let result = [];
-      if (!data.empty) {
-        data.docs.forEach((item) => {
-          result.push(item.data());
-          setTopSellers(result);
+          result.push(item);
+          setDatta(result);
         });
       } else {
       }
@@ -61,6 +51,13 @@ function Home() {
       }
     });
   });
+  const {data, isLoading} =useQuery(
+    "topSellers",
+    async()=>{
+      const {data} = await axios.get('http://localhost:3000/topSellers')
+      setTopSellers(data)
+    }
+  )
   return (
     <div className="absolute top-[80px] left-0 flex flex-col items-center gap-[100px] w-[100%]">
       <div className="">
@@ -283,7 +280,7 @@ function Home() {
           Технологии строительства
         </h1>
         <div className="flex items-center w-[100%] flex-wrap gap-[20px] max-sm:w-[100%] max-sm:flex-col">
-          {data.map((item) => {
+          {datta.map((item) => {
             return (
               <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[100%]">
                 <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
@@ -352,7 +349,7 @@ function Home() {
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
           Хиты продаж
         </h1>
-        <Swipper data={topSellers} />
+        <Swipper data={topSellers} isLink={'/bestSellerItem'} slidesPerView={window.innerWidth <= 426? 1:4} space={window.innerWidth <= 426? 200:130} additionallClass={'w-[1290px] px-[100px] max-sm:w-[320px]'}/>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[228px] max-sm:text-left">
@@ -533,7 +530,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <button className="bg-[#8DB338] w-[100%] py-[9px] text-white text-[14px] font-bold">
+        <button className="bg-[#8DB338] w-[80%] py-[9px] text-white text-[14px] font-bold">
           Стать партнером сервиса
         </button>
       </div>
@@ -568,7 +565,7 @@ function Home() {
           </h1>
         </div>
         <div className="flex items-center">
-          <Swipper data={blog}/>
+          <Swipper data={blog} slidesPerView={window.innerWidth <= 426? 1:4} space={window.innerWidth <= 426? 100:130} additionallClass={'w-[1290px] px-[100px] max-sm:w-[320px]'}/>
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[100%]">
@@ -579,7 +576,7 @@ function Home() {
           </h1>
         </div>
         <div className="flex items-center">
-          <Swipper data={feedback}/>
+          <Swipper data={feedback} slidesPerView={window.innerWidth <= 426? 1:4} space={window.innerWidth <= 426? 100:130} additionallClass={'w-[1290px] px-[100px] max-sm:w-[320px]'}/>
         </div>
       </div>
       <QuestionComponent />

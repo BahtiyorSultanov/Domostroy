@@ -6,16 +6,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './Components/Navbar'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
+import BestSellerItem from './pages/BestSellers/BestSellerItem'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="w-[100%]">
+    <div className="wrapper">
       <BrowserRouter>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/bestSellerItem/:id' element={<BestSellerItem/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

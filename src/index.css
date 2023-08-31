@@ -102,3 +102,7 @@ element.style {
   position: absolute !important;
   top: 80px !important;
 }
+  .content {
+   min-height: 100%;
+  }
+  
