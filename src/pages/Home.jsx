@@ -15,7 +15,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 function Home() {
-  const [datta, setDatta] = useState([]);
+  const [buildingTricks, setBuildingTricks] = useState([]);
   const [topSellers, setTopSellers] = useState([]);
   const [blog, setBlog] = useState([]);
   const [feedback, setFeedback] = useState([]);
@@ -24,8 +24,8 @@ function Home() {
       let result = [];
       if (!data.empty) {
         data.docs.forEach((item) => {
-          result.push(item);
-          setDatta(result);
+          result.push(item.data());
+          setBuildingTricks(result);
         });
       } else {
       }
@@ -51,13 +51,10 @@ function Home() {
       }
     });
   });
-  const {data, isLoading} =useQuery(
-    "topSellers",
-    async()=>{
-      const {data} = await axios.get('http://localhost:3000/topSellers')
-      setTopSellers(data)
-    }
-  )
+  const { data, isLoading } = useQuery("topSellers", async () => {
+    const { data } = await axios.get("http://localhost:3000/topSellers");
+    setTopSellers(data);
+  });
   return (
     <div className="flex flex-col items-center gap-[100px] h-[100%] w-[100%]">
       <div className="">
@@ -279,17 +276,18 @@ function Home() {
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[100%] max-sm:text-left">
           Технологии строительства
         </h1>
-        <div className="flex items-center w-[100%] flex-wrap gap-[20px] max-sm:w-[100%] max-sm:flex-col">
-          {datta.map((item) => {
-            return (
-              <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[100%]">
-                <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
-                  {item.text}
-                </h1>
-                <img src={item.img} alt="" />
-              </div>
-            );
-          })}
+        <div className="flex items-center w-[100%] flex-wrap gap-[20px] max-sm:w-[100%] max-sm:flex-col relative z-40">
+          {buildingTricks &&
+            buildingTricks.map((item) => {
+              return (
+                <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[100%] z-70 border-[2px]">
+                  <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
+                    {item.text && item.text}
+                  </h1>
+                  <img src={item.img && item.img} alt="" />
+                </div>
+              );
+            })}
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px]">
@@ -349,7 +347,13 @@ function Home() {
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[290px] max-sm:text-left">
           Хиты продаж
         </h1>
-        <Swipper data={topSellers} isLink={'/bestSellerItem'} slidesPerView={window.innerWidth <= 426? 1:4} space={window.innerWidth <= 426? 200:130} additionallClass={'w-[1290px] px-[100px] max-sm:w-[320px]'}/>
+        <Swipper
+          data={topSellers}
+          isLink={"/bestSellerItem"}
+          slidesPerView={window.innerWidth <= 426 ? 1 : 4}
+          space={window.innerWidth <= 426 ? 200 : 130}
+          additionallClass={"w-[1290px] px-[100px] max-sm:w-[320px]"}
+        />
       </div>
       <div className="flex flex-col items-start gap-[20px]">
         <h1 className="text-[40px] text-[#49423D] font-bold max-sm:text-[28px] max-sm:w-[228px] max-sm:text-left">
@@ -565,7 +569,12 @@ function Home() {
           </h1>
         </div>
         <div className="flex items-center">
-          <Swipper data={blog} slidesPerView={window.innerWidth <= 426? 1:4} space={window.innerWidth <= 426? 100:130} additionallClass={'w-[1290px] px-[100px] max-sm:w-[320px]'}/>
+          <Swipper
+            data={blog}
+            slidesPerView={window.innerWidth <= 426 ? 1 : 4}
+            space={window.innerWidth <= 426 ? 100 : 130}
+            additionallClass={"w-[1290px] px-[100px] max-sm:w-[320px]"}
+          />
         </div>
       </div>
       <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[100%]">
@@ -576,7 +585,12 @@ function Home() {
           </h1>
         </div>
         <div className="flex items-center">
-          <Swipper data={feedback} slidesPerView={window.innerWidth <= 426? 1:4} space={window.innerWidth <= 426? 100:130} additionallClass={'w-[1290px] px-[100px] max-sm:w-[320px]'}/>
+          <Swipper
+            data={feedback}
+            slidesPerView={window.innerWidth <= 426 ? 1 : 4}
+            space={window.innerWidth <= 426 ? 100 : 130}
+            additionallClass={"w-[1290px] px-[100px] max-sm:w-[320px]"}
+          />
         </div>
       </div>
       <QuestionComponent />
