@@ -22,28 +22,30 @@ import Register from "../../Components/Register";
 
 function BestSellerItem() {
   const { id } = useParams();
-  console.log(id);
   const [topSellers, setTopSellers] = useState([]);
   const [allTopSells, setAllTopSells] = useState([]);
-  const { data, isLoading } = useQuery(
-    "topSellers",
-    async () => {
-      const { data } = await axios.get(
-        `http://localhost:3000/topSellers/${id}`
-      );
-      setTopSellers(data);
-    },
-    async () => {
-      const { data } = await axios.get(`http://localhost:3000/topSellers`);
-      setAllTopSells(data);
-    }
-  );
-  console.log(allTopSells);
+  // const { data, isLoading } = useQuery(
+  //   "topSellers",
+  //   async () => {
+  //     const { data } = await axios.get(
+  //       `http://localhost:3000/topSellers/${id}`
+  //     );
+  //     setTopSellers(data);
+  //   },
+  //   setTimeout(
+  //     async () => {
+  //       const { data } = await axios.get(`http://localhost:3000/topSellers`);
+  //       setAllTopSells(data);
+  //     }
+  //   , 2000)
+  // );
   const [open, setOpen] = useState(false);
   return (
     <div className="mt-[30px] flex flex-col items-start h-[100%] w-[100%]">
       <div className="flex flex-col items-start gap-[50px]">
-        <h1 className="text-[40px] text-[#49423D] max-sm:text-[28px]">{topSellers.h1}</h1>
+        <h1 className="text-[40px] text-[#49423D] max-sm:text-[28px]">
+          {topSellers.h1}
+        </h1>
         <div className="flex items-start max-sm:flex-col gap-[100px]">
           <div className="flex flex-col items-start gap-0">
             <div className="flex items-end max-sm:hidden">
@@ -297,9 +299,16 @@ function BestSellerItem() {
           </div>
           <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
           <Swipper
-            data={allTopSells}
+            data={allTopSells.filter((item) => {
+              return (
+                item.typeofBuilding == topSellers.typeofBuilding ||
+                item.size == topSellers.size ||
+                item.technology == topSellers.technology
+              );
+            })}
             slidesPerView={window.innerWidth <= 426 ? 1 : 4}
             space={window.innerWidth <= 426 ? 200 : 130}
+            isLink={`/bestSellerItem`}
             additionallClass={" w-[1290px] px-[100px] max-sm:w-[320px]"}
           />
         </div>

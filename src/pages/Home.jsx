@@ -13,9 +13,11 @@ import Register from "../Components/Register";
 import Swipper from "../Components/Swiper";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 function Home() {
   const [buildingTricks, setBuildingTricks] = useState([]);
+  const [typeOfBuildings, setTypeOfBuildings] = useState([]);
   const [topSellers, setTopSellers] = useState([]);
   const [blog, setBlog] = useState([]);
   const [feedback, setFeedback] = useState([]);
@@ -34,7 +36,7 @@ function Home() {
       let result = [];
       if (!data.empty) {
         data.docs.forEach((item) => {
-          result.push(item.data());
+          result.push({ ...item.data(), id: item.id });
           setBlog(result);
         });
       } else {
@@ -46,6 +48,16 @@ function Home() {
         data.docs.forEach((item) => {
           result.push(item.data());
           setFeedback(result);
+        });
+      } else {
+      }
+    });
+    projectFirestore.collection("typeOfBuildings").onSnapshot((data) => {
+      let result = [];
+      if (!data.empty) {
+        data.docs.forEach((item) => {
+          result.push({ ...item.data(), id: item.id });
+          setTypeOfBuildings(result);
         });
       } else {
       }
@@ -120,8 +132,20 @@ function Home() {
         <h1 className="text-[40px] font-bold text-[#49423D] max-sm:text-[28px]">
           Типы строений
         </h1>
-        <div className="flex items-center gap-[50px] max-sm:hidden">
-          <div className="relative w-[234px] h-[312px]">
+        <div className="flex items-center gap-[50px]">
+          <Swipper
+            isLink={false}
+            data={typeOfBuildings}
+            slidesPerView={window.innerWidth <= 426 ? 1 : 5}
+            space={window.innerWidth <= 426 ? 200 : 200}
+            additionallClass={"w-[1290px] px-[100px] max-sm:w-[320px]"}
+            h1Class={"text-[20px] font-bold absolute bottom-[20px] left-[20px]"}
+            spanClass={
+              "absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]"
+            }
+            cardClass={"relative w-[234px] h-[312px]"}
+          />
+          {/* <div className="relative w-[234px] h-[312px]">
             <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
               332
             </span>
@@ -132,55 +156,7 @@ function Home() {
             <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
               Дома
             </h1>
-          </div>
-          <div className="relative w-[234px] h-[312px]">
-            <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-              332
-            </span>
-            <img
-              src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-              className="w-[100%]"
-            />
-            <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-              Дома
-            </h1>
-          </div>
-          <div className="relative w-[234px] h-[312px]">
-            <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-              332
-            </span>
-            <img
-              src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-              className="w-[100%]"
-            />
-            <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-              Дома
-            </h1>
-          </div>
-          <div className="relative w-[234px] h-[312px]">
-            <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-              332
-            </span>
-            <img
-              src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-              className="w-[100%]"
-            />
-            <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-              Дома
-            </h1>
-          </div>
-          <div className="relative w-[234px] h-[312px]">
-            <span className="absolute left-[20px] text-[20px] text-white font-semibold top-[20px] px-[12px] py-[4px] bg-[#8DB338]">
-              332
-            </span>
-            <img
-              src="http://127.0.0.1:5500/src/assets/Image%20(2).svg"
-              className="w-[100%]"
-            />
-            <h1 className="text-[20px] font-bold absolute bottom-[20px] left-[20px]">
-              Дома
-            </h1>
-          </div>
+          </div> */}
         </div>
         <div className="sm:hidden">
           {/* <Swiper
@@ -280,7 +256,7 @@ function Home() {
           {buildingTricks &&
             buildingTricks.map((item) => {
               return (
-                <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[100%] z-70 border-[2px]">
+                <div className="w-[410px] h-[120px] relative flex items-center max-sm:w-[100%]">
                   <h1 className="absolute text-[20px] text-[#49423D] left-[20px]">
                     {item.text && item.text}
                   </h1>
@@ -564,15 +540,18 @@ function Home() {
       <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[100%]">
         <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
           <h1 className="text-[40px] font-bold text-[#49423D]">Блог</h1>
-          <h1 className="text-[28px] font-semibold text-[#8DB338]">
-            Все блоги
-          </h1>
+          <NavLink to="/blog">
+            <h1 className="text-[28px] font-semibold text-[#8DB338]">
+              Все блоги
+            </h1>
+          </NavLink>
         </div>
         <div className="flex items-center">
           <Swipper
-            data={blog}
+            isLink={`/blogItem`}
+            data={blog.slice(0, 3)}
             slidesPerView={window.innerWidth <= 426 ? 1 : 4}
-            space={window.innerWidth <= 426 ? 100 : 130}
+            space={window.innerWidth <= 426 ? 200 : 130}
             additionallClass={"w-[1290px] px-[100px] max-sm:w-[320px]"}
           />
         </div>
@@ -580,15 +559,17 @@ function Home() {
       <div className="flex flex-col items-start gap-[20px] w-[1290px] max-sm:w-[100%]">
         <div className="flex w-[100%] justify-between items-center max-sm:flex-col max-sm:items-start">
           <h1 className="text-[40px] font-bold text-[#49423D]">Отзывы</h1>
-          <h1 className="text-[28px] font-semibold text-[#8DB338]">
-            Все отзывы
-          </h1>
+          <NavLink to={"feedback"}>
+            <h1 className="text-[28px] font-semibold text-[#8DB338]">
+              Все отзывы
+            </h1>
+          </NavLink>
         </div>
         <div className="flex items-center">
           <Swipper
             data={feedback}
             slidesPerView={window.innerWidth <= 426 ? 1 : 4}
-            space={window.innerWidth <= 426 ? 100 : 130}
+            space={window.innerWidth <= 426 ? 200 : 130}
             additionallClass={"w-[1290px] px-[100px] max-sm:w-[320px]"}
           />
         </div>

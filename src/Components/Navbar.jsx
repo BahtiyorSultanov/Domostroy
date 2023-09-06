@@ -12,7 +12,6 @@ import { NavLink } from "react-router-dom";
 import MenuUls from "./MenuUls";
 function Navbar() {
   const { isOpen, color, changeColor, isOpener } = useContext(Context);
-  console.log(isOpen);
   return (
     <div className="absolute top-0 left-0 w-[100%] h-[80px] flex flex-col max-sm:h-[60px] items-center max-sm:pl-[20px]">
       <div className="flex flex-col items-center gap-[40px]">
@@ -71,49 +70,87 @@ function Navbar() {
                       "Типы строений",
                     ]}
                     lis={[
-                      "Дома",
-                      "Бани",
-                      "Гаражи",
-                      "Навесы",
-                      "Коммерческие объекты",
+                      { linkName: "Дома", linkPath: "/homes" },
+                      { linkName: "Бани", linkPath: "/baths" },
+                      { linkName: "Гаражи", linkPath: "/garages" },
+                      { linkName: "Навесы", linkPath: "/canopies" },
+                      {
+                        linkName: "Коммерческие объекты",
+                        linkPath: "/commercial",
+                      },
                     ]}
                   />
+
                   <MenuUls
                     h1={["Технологии"]}
                     lis={[
-                      "Клееный брус",
-                      "Лафет",
-                      "Рубленное бревно",
-                      "Каркасные",
-                      "CLT панели",
-                      "Панельно-каркасные",
-                      "Kelo (кело)",
+                      { linkName: "Клееный брус", linkPath: "/glulam" },
+                      { linkName: "Лафет", linkPath: "/lafet" },
+                      { linkName: "Рубленное бревно", linkPath: "/log" },
+                      { linkName: "Каркасные", linkPath: "/frame" },
+                      { linkName: "CLT панели", linkPath: "/clt-panels" },
+                      {
+                        linkName: "Панельно-каркасные",
+                        linkPath: "/panel-frame",
+                      },
+                      { linkName: "Kelo (кело)", linkPath: "/kelo" },
                     ]}
                   />
+
                   <MenuUls
                     h1={["Магазин"]}
                     lis={[
-                      "Фермы на МЗП",
-                      "Наружная отделка",
-                      "Отделка бань и саун",
-                      "Термодревисина",
-                      "Терраса",
-                      "Крашенная древисина",
-                      "Внутренняя отделка",
-                      "Окна",
+                      { linkName: "Фермы на МЗП", linkPath: "/roof-trusses" },
+                      {
+                        linkName: "Наружная отделка",
+                        linkPath: "/exterior-finishing",
+                      },
+                      {
+                        linkName: "Отделка бань и саун",
+                        linkPath: "/sauna-finishing",
+                      },
+                      { linkName: "Термодревисина", linkPath: "/thermo-wood" },
+                      { linkName: "Терраса", linkPath: "/terrace" },
+                      {
+                        linkName: "Крашенная древисина",
+                        linkPath: "/painted-wood",
+                      },
+                      {
+                        linkName: "Внутренняя отделка",
+                        linkPath: "/interior-finishing",
+                      },
+                      { linkName: "Окна", linkPath: "/windows" },
                     ]}
                   />
+
                   <MenuUls
                     h1={["Сервис"]}
-                    lis={["О сервисе", "Галерея", "Блог", "Отзывы", "Услуги"]}
+                    lis={[
+                      { linkName: "О сервисе", linkPath: "/about" },
+                      { linkName: "Галерея", linkPath: "/gallery" },
+                      { linkName: "Блог", linkPath: "/blog" },
+                      { linkName: "Отзывы", linkPath: "/reviews" },
+                      { linkName: "Услуги", linkPath: "/services" },
+                    ]}
                   />
+
                   <MenuUls
                     h1={["Информация"]}
-                    lis={["Оплата", "Документы", "Контакты", "Сотрудничество"]}
+                    lis={[
+                      { linkName: "Оплата", linkPath: "/payment" },
+                      { linkName: "Документы", linkPath: "/documents" },
+                      { linkName: "Контакты", linkPath: "/contacts" },
+                      { linkName: "Сотрудничество", linkPath: "/partnership" },
+                    ]}
                   />
+
                   <MenuUls
                     h1={["Партнеры сервиса"]}
-                    lis={["Архитекторы", "Дизайнеры", "Заводы"]}
+                    lis={[
+                      { linkName: "Архитекторы", linkPath: "/architects" },
+                      { linkName: "Дизайнеры", linkPath: "/designers" },
+                      { linkName: "Заводы", linkPath: "/factories" },
+                    ]}
                   />
                 </div>
               </div>
@@ -173,49 +210,87 @@ function Navbar() {
                   <MenuUls
                     h1={["Типы строений"]}
                     lis={[
-                      "Дома",
-                      "Бани",
-                      "Гаражи",
-                      "Навесы",
-                      "Коммерческие объекты",
+                      { linkName: "Дома", linkPath: "/homes" },
+                      { linkName: "Бани", linkPath: "/baths" },
+                      { linkName: "Гаражи", linkPath: "/garages" },
+                      { linkName: "Навесы", linkPath: "/canopies" },
+                      {
+                        linkName: "Коммерческие объекты",
+                        linkPath: "/commercial",
+                      },
                     ]}
                   />
+
                   <MenuUls
                     h1={["Технологии"]}
                     lis={[
-                      "Клееный брус",
-                      "Лафет",
-                      "Рубленное бревно",
-                      "Каркасные",
-                      "CLT панели",
-                      "Панельно-каркасные",
-                      "Kelo (кело)",
+                      { linkName: "Клееный брус", linkPath: "/glulam" },
+                      { linkName: "Лафет", linkPath: "/lafet" },
+                      { linkName: "Рубленное бревно", linkPath: "/log" },
+                      { linkName: "Каркасные", linkPath: "/frame" },
+                      { linkName: "CLT панели", linkPath: "/clt-panels" },
+                      {
+                        linkName: "Панельно-каркасные",
+                        linkPath: "/panel-frame",
+                      },
+                      { linkName: "Kelo (кело)", linkPath: "/kelo" },
                     ]}
                   />
+
                   <MenuUls
                     h1={["Магазин"]}
                     lis={[
-                      "Фермы на МЗП",
-                      "Наружная отделка",
-                      "Отделка бань и саун",
-                      "Термодревисина",
-                      "Терраса",
-                      "Крашенная древисина",
-                      "Внутренняя отделка",
-                      "Окна",
+                      { linkName: "Фермы на МЗП", linkPath: "/roof-trusses" },
+                      {
+                        linkName: "Наружная отделка",
+                        linkPath: "/exterior-finishing",
+                      },
+                      {
+                        linkName: "Отделка бань и саун",
+                        linkPath: "/sauna-finishing",
+                      },
+                      { linkName: "Термодревисина", linkPath: "/thermo-wood" },
+                      { linkName: "Терраса", linkPath: "/terrace" },
+                      {
+                        linkName: "Крашенная древисина",
+                        linkPath: "/painted-wood",
+                      },
+                      {
+                        linkName: "Внутренняя отделка",
+                        linkPath: "/interior-finishing",
+                      },
+                      { linkName: "Окна", linkPath: "/windows" },
                     ]}
                   />
+
                   <MenuUls
                     h1={["Сервис"]}
-                    lis={["О сервисе", "Галерея", "Блог", "Отзывы", "Услуги"]}
+                    lis={[
+                      { linkName: "О сервисе", linkPath: "/about" },
+                      { linkName: "Галерея", linkPath: "/gallery" },
+                      { linkName: "Блог", linkPath: "/blog" },
+                      { linkName: "Отзывы", linkPath: "/reviews" },
+                      { linkName: "Услуги", linkPath: "/services" },
+                    ]}
                   />
+
                   <MenuUls
                     h1={["Информация"]}
-                    lis={["Оплата", "Документы", "Контакты", "Сотрудничество"]}
+                    lis={[
+                      { linkName: "Оплата", linkPath: "/payment" },
+                      { linkName: "Документы", linkPath: "/documents" },
+                      { linkName: "Контакты", linkPath: "/contacts" },
+                      { linkName: "Сотрудничество", linkPath: "/partnership" },
+                    ]}
                   />
+
                   <MenuUls
                     h1={["Партнеры сервиса"]}
-                    lis={["Архитекторы", "Дизайнеры", "Заводы"]}
+                    lis={[
+                      { linkName: "Архитекторы", linkPath: "/architects" },
+                      { linkName: "Дизайнеры", linkPath: "/designers" },
+                      { linkName: "Заводы", linkPath: "/factories" },
+                    ]}
                   />
                 </div>
               </div>

@@ -7,10 +7,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemContext>
-      <QueryClientProvider client={new QueryClient()}>
+    <QueryClientProvider client={new QueryClient()}>
+      <ThemContext>
         <App />
-      </QueryClientProvider>
-    </ThemContext>
+      </ThemContext>
+    </QueryClientProvider>
   </React.StrictMode>
 );

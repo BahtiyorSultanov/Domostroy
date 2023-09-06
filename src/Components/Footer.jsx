@@ -6,7 +6,7 @@ function Footer() {
     <div className="footer absolute left-0 mt-[100px] w-[100%] h-[581px] bg-[#1C1C1C] flex flex-col items-center gap-[100px] pt-[70px] max-sm:w-[100%] max-sm:h-[2125px]">
       <div className="flex items-start gap-[70px] relative max-sm:flex-col">
         <ul className="footUl">
-          <NavLink>
+          <NavLink to={'/'}>
             <li>
               <img
                 src="http://127.0.0.1:5500/src/assets/Logo.svg"
