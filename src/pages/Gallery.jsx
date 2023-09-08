@@ -16,14 +16,17 @@ function Gallery() {
   let gallerySpa = gallery.filter((item) => {
     return item.type == "Спа-комплексы";
   });
-  const api = `http://localhost:3000/gallery`
-  const {data, isLoading} = useQuery(
-    "images",
-    async()=>{
-      const {data} = await axios.get(api)
-      setGallery(data)
+  projectFirestore.collection("gallery").onSnapshot((data) => {
+    let result = [];
+    if (!data.empty) {
+      data.docs.forEach((item) => {
+        result.push({ ...item.data(), id: item.id });
+        setGallery(result);
+      });
+    } else {
     }
-  )
+  });
+
   return (
     <div className="w-[100%] flex flex-col items-start gap-[100px]">
       <div className="flex flex-col items-start">
@@ -38,7 +41,10 @@ function Gallery() {
           объекты и иные сооружения. Внимательно изучите нашу галерею, и вам
           будет гораздо проще подобрать для себя оптимальное решение.{" "}
         </h1>
-        <img src="" className="w-[690px] h-[400px] max-sm:w-[100%] max-sm:h-[200px]" />
+        <img
+          src=""
+          className="w-[690px] h-[400px] max-sm:w-[100%] max-sm:h-[200px]"
+        />
       </div>
       {galleryExt.map((item) => {
         return (
@@ -51,10 +57,10 @@ function Gallery() {
                 </h1>
               </NavLink>
             </div>
-            <div className="flex max-sm:flex-col gap-[50px] items-center">
+            <div className="flex w-[100%] max-sm:flex-col gap-[50px] items-center">
               {item.img &&
                 item.img.slice(0, 3).map((sorce) => {
-                  return <img src={sorce} className="w-[410px] h-[410px] max-sm:w-[100%]" />;
+                  return <img src={sorce} className="w-[100%] h-[410px]" />;
                 })}
             </div>
           </div>
@@ -74,7 +80,12 @@ function Gallery() {
             <div className="flex max-sm:flex-col gap-[50px] items-center">
               {item.img &&
                 item.img.slice(0, 3).map((sorce) => {
-                  return <img src={sorce} className="w-[410px] h-[410px]  max-sm:w-[100%]" />;
+                  return (
+                    <img
+                      src={sorce}
+                      className="w-[100%] h-[410px]"
+                    />
+                  );
                 })}
             </div>
           </div>
@@ -94,7 +105,12 @@ function Gallery() {
             <div className="flex max-sm:flex-col gap-[50px] items-center">
               {item.img &&
                 item.img.slice(0, 3).map((sorce) => {
-                  return <img src={sorce} className="w-[410px] h-[410px]  max-sm:w-[100%]" />;
+                  return (
+                    <img
+                      src={sorce}
+                      className="w-[100%] h-[410px]"
+                    />
+                  );
                 })}
             </div>
           </div>

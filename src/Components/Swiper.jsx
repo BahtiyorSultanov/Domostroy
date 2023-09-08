@@ -34,7 +34,7 @@ function Swipper({
         modules={[Autoplay, Pagination, Navigation]}
         className={`mySwiper ${additionallClass}`}
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <NavLink to={`${isLink}`}>
             <div className="flex items-center">
               <div className="flex flex-col items-start w-[234px] border-[2px] gap-[20px]">
@@ -49,11 +49,11 @@ function Swipper({
               </div>
             </div>
           </NavLink>
-        </SwiperSlide>
+        </SwiperSlide> */}
         {data &&
           data.map((item) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide className="">
                 <NavLink
                   to={`${isLink ? isLink : ""}/${
                     isLink && item.id ? item.id : ""

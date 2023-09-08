@@ -49,6 +49,9 @@ element.style {
   transform-origin: 0px 0px;
 }
 @media screen and (min-width: 426px) {
+  .css-eg0mwd-MuiSlider-thumb {
+    border-radius: 0% !important;
+  }
   .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
     width: 770px;
     position: relative !important;
@@ -102,7 +105,6 @@ element.style {
   position: absolute !important;
   top: 80px !important;
 }
-  .content {
-   min-height: 100%;
-  }
-  
+.content {
+  min-height: 100%;
+}

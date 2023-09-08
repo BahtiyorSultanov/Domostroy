@@ -12,6 +12,7 @@ import GalleryItem from './pages/GalleryItem'
 import Blog from './pages/Blog'
 import BlogItem from './pages/BlogItem'
 import FeedBacks from './pages/FeedBacks'
+import About from './pages/About'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +26,7 @@ function App() {
         <Route path='/bestSellerItem/:id' element={<BestSellerItem/>}/>
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/blog' element={<Blog/>}/>
+        <Route path='/about' element={<About/>}/>
         <Route path='/feedback' element={<FeedBacks/>}/>
         <Route path='/galleryItem/:id' element={<GalleryItem/>}/>
         <Route path='/blogItem/:id' element={<BlogItem/>}/>
